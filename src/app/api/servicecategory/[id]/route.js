@@ -1,6 +1,7 @@
-import { servicecategoryGetbyID } from "../CRUD/ServicecategoryGET";
-import { servicecategoryPUT } from "../CRUD/ServicecategoryPUT";
+
 import { servicecategoryDELETE } from "../CRUD/servicecategoryDELETE";
+import { servicecategoryGetbyID } from "../CRUD/servicecategoryGET";
+import { servicecategoryPUT } from "../CRUD/servicecategoryPUT";
 
 
 

@@ -5,7 +5,7 @@ import LayoutProvider from "@/Component/LayoutProvider";
 import ProductHero from "@/Component/ProductHero";
 import React, { useContext } from "react";
 
-const product = () => {
+const Product = () => {
   const { Header } = useContext(NavbarContext);
 
   return (
@@ -17,4 +17,4 @@ const product = () => {
   );
 };
 
-export default product;
+export default Product;
