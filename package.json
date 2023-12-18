@@ -10,11 +10,12 @@
   },
   "dependencies": {
     "@motionone/utils": "^10.16.3",
-    "@prisma/client": "^5.6.0",
+    "@prisma/client": "^5.7.0",
     "@vercel/postgres": "^0.5.1",
     "antd": "^5.11.5",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
+    "generate": "^0.14.0",
     "next": "14.0.3",
     "next-themes": "^0.2.1",
     "react": "^18",

@@ -1,4 +1,3 @@
-
 import { servicecategoryDELETE } from "../CRUD/servicecategoryDELETE";
 import { servicecategoryGetbyID } from "../CRUD/servicecategoryGET";
 import { servicecategoryPUT } from "../CRUD/servicecategoryPUT";
