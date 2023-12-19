@@ -14,8 +14,8 @@ const TeamMain = () => {
     <LayoutProvider>
       <Header />
       <TeamHero />
-      <Team />
       <Technology />
+      <Team />
       <Footer />
     </LayoutProvider>
   );

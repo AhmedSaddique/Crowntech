@@ -14,8 +14,8 @@ const Developer = () => {
     <LayoutProvider>
       <Header />
       <TeamHero />
-      <DeveloperTeam />
       <Technology />
+      <DeveloperTeam />
       <Footer />
     </LayoutProvider>
   );
