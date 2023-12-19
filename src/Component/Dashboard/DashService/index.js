@@ -72,7 +72,6 @@ const DashService = () => {
         maskStyle={{ backdropFilter: visibleDrawer2 ? 'blur(10px)' : 'none' }}
 
       >
-        {/* Drawer 2 content goes here */}
         <AddService/>
       </Drawer>
       <ServiceTable data={data} />

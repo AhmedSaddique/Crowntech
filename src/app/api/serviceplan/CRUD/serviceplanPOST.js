@@ -5,44 +5,46 @@ const prisma = new PrismaClient();
 
 export const serviceplanPOST = async (req) => {
     try {
-        const items = await req.json(); // Assuming items is the array from frontend
+        const body = await req.json();
+        const { title, text, price, chooseplan, description, feature, tabId } = body;
 
-        // You should loop over each item if you're sending more than one
-        items.forEach(async (item) => {
-            const { title, text, price,chooseplan, description, feature } = item;
-
-            if (!Array.isArray(feature)) {
-                throw new Error("feature is not an array or is undefined");
-            }
-
-            const servicetab = await prisma.serviceplan.create({
-                data: {
-                    title,
-                    text,
-                    price,
-                    chooseplan,
-                    description,
-                    feature: {
-                        create: feature.map(subItem => ({
-                            option: subItem.option
-                        }))
-                    }
+        const serviceplan = await prisma.serviceplan.create({
+            data: {
+                title,
+                text,
+                price,
+                chooseplan,
+                description,
+                feature: {
+                    create: feature.map(subItem => ({ ...subItem }))
                 },
-                include: {
-                    feature: true // Include sub-items in the response
-                }
-            });
+                tabId,
+            },
+            include: {
+                feature: true, // Include features in the response
+                tab: true
+            }
         });
 
-        return new NextResponse(JSON.stringify({
-            success: "Data saved successfully", items
-        }), { status: 200 });
-
+        // Return a success response with the created serviceplan
+        return new NextResponse(
+            JSON.stringify({
+                success: "Serviceplan saved successfully",
+                serviceplan,
+            }),
+            { status: 201 } // Use 201 Created status code
+        );
     } catch (error) {
-        console.error(error);
-        return new NextResponse(JSON.stringify({
-            error: "Data not saved", message: error.message || error.toString()
-        }), { status: 400 });
+        // Handle errors and return an error response
+        console.error("Error occurred:", error);
+        return new NextResponse(
+            JSON.stringify({
+                error: "Error in processing request",
+                details: error.message,
+                success: false,
+                status: 400,
+            }),
+            { status: 400 }
+        );
     }
 };
-

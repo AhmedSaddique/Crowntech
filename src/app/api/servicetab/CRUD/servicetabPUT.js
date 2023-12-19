@@ -3,37 +3,33 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export const servicetabPUT = async (req, { params }) => {
+export const servicetabPUT = async (req,{ params }) => {
     try {
         const id = parseInt(params.id, 10);
-        const check = await prisma.servicetab.findUnique({ where: { id } });
-        if (!check) {
-            return new NextResponse(JSON.stringify({
-                error: "Data not found"
-            }), { status: 400 });
-        }
-
-        const jsonData = await req.json();
-        const { subdata, ...restData } = jsonData;
-
-
-        await prisma.serviceSubItem.deleteMany({ where: { mainItemId: id } });
-
-        const updatedservicetab = await prisma.servicetab.update({
-            where: { id },
+        const body = await req.json();
+        const { titlehead, title, heading, description, subdata, serviceInfoId } = body;
+        const servicetab = await prisma.servicetab.update({
+            where: {
+                id: parseInt(id, 10),
+            },
             data: {
-                ...restData,
+                titlehead,
+                title,
+                heading,
+                description,
                 subdata: {
-                    create: subdata
-                }
+                    create: subdata, // Assuming subdata is an array of ServiceSubItem
+                },
+                serviceInfoId,
             },
             include: {
-                subdata: true
-            }
+                subdata: true, // Include the related subdata in the response
+                serviceInfos: true, // Include the related serviceInfo in the response
+            },
         });
 
         return new NextResponse(JSON.stringify({
-            success: "Data updated successfully", updatedservicetab
+            success: "Data updated successfully", servicetab
         }), { status: 200 });
 
     } catch (error) {

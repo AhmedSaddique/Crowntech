@@ -13,6 +13,6 @@ export const DELETE = (req, {params}) =>{
     return servicecategoryDELETE(req, {params});
 }
 
-export const PUT = (req, {params}) =>{
-    return servicecategoryPUT(req, {params});
+export const PUT = (req, {params,body }) =>{
+    return servicecategoryPUT(req, {params,body });
 }

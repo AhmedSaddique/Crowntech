@@ -5,59 +5,64 @@ import { NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 
 export const servicetabGET = async (req) => {
-    try {
-        const servicetab = await prisma.servicetab.findMany({
-            include: {
-              subdata: true, // This will include the subdata in the result
-            }
-          });
-        
-        return new NextResponse(JSON.stringify({
-            success: "Data fetched successfully", servicetab },
-            {status :"200"}
-            
-            ))
-        
-    } catch (error) {
-        return new NextResponse(JSON.stringify({
-            error: "Data not fetched", error },
-            {status :"400"}
-            
-            ))
-    }
+  try {
+    const servicetabs = await prisma.servicetab.findMany();
+    return new NextResponse(
+        JSON.stringify({
+            success: true,
+            servicetabs,
+        }),
+        { status: 200 }
+    );
+} catch (error) {
+    console.error("Error occurred:", error);
+    return new NextResponse(
+        JSON.stringify({
+            error: "Error in processing request",
+            details: error.message,
+            success: false,
+            status: 500,
+        }),
+        { status: 500 }
+    );
+}
 };
 
-export const servicetabGetbyID = async (req, {params}) =>{
+export const servicetabGetbyID = async (req, { params }) => {
+  try {
+    const { id } = params; // Correctly destructure 'id' from params
+    const servicetab = await prisma.servicetab.findUnique({
+      where: { id: parseInt(id) },
+    });
 
-
-    try {
-        const id = params.id;
-        const servicetab = await prisma.servicetab.findUnique({
-            where: {
-              id: parseInt(id, 10),
-            },
-            include: {
-              subdata: true, // This will include the subdata in the result
-            }
-          });
-        if(!servicetab){
-            return new NextResponse(JSON.stringify({
-                error: "Data not found", error },
-                {status :"400"}
-                
-                ))
-        }
-        return new NextResponse(JSON.stringify({
-            success: "Data fetched successfully", servicetab },
-            {status :"200"}
-            
-            ))
-    } catch (error) {
-        return new NextResponse(JSON.stringify({
-            error: "Data not fetched", error },
-            {status :"400"}
-            
-            ))
-        
+    if (!servicetab) {
+      return new NextResponse(
+        JSON.stringify({
+          error: "Servicetab not found",
+          success: false,
+          status: 404,
+        }),
+        { status: 404 }
+      );
     }
-}
+
+    return new NextResponse(
+      JSON.stringify({
+        success: true,
+        servicetab,
+      }),
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error occurred:", error);
+    return new NextResponse(
+      JSON.stringify({
+        error: "Error in processing request",
+        details: error.message,
+        success: false,
+        status: 500,
+      }),
+      { status: 500 }
+    );
+  }
+};

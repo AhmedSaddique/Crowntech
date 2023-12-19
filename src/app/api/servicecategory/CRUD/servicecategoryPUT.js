@@ -3,38 +3,30 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export const servicecategoryPUT = async (req, {params}) => {
+export const servicecategoryPUT = async (req, { params }) => {
     try {
-        const id = params.id;
-        const check = await prisma.servicecategory.findUnique({
+        const id = parseInt(params.id, 10);
+        const body = await req.json();
+        const { catName } = body; // Remove the 's' here
+
+        const servicecategory = await prisma.servicecategory.update({
             where: {
-                id : parseInt(id, 10),
-            }
+                id: parseInt(id, 10),
+            },
+            data: {
+                catName,
+            },
         });
-        if(!check){
-            return new NextResponse(JSON.stringify({
-                error: "User not found", error },
-                {status :"400"}
-                ))
-        }
-        const jsonData = await req.json();
-        const updatedservicecategory = await prisma.servicecategory.update({
-            where: {
-                id : parseInt(id, 10)},
-                 data: jsonData
-        })
+
         return new NextResponse(JSON.stringify({
-            success: "User updated successfully", updatedservicecategory },
-            {status :"200"}
-            
-            ))
+            success: "Category updated successfully",
+            servicecategory,
+        }), { status: "200" });
 
     } catch (error) {
         return new NextResponse(JSON.stringify({
-            error: "User not updated", error },
-            {status :"400"}
-            
-            ))
-        
+            error: "Category not updated",
+            details: error.message,
+        }), { status: "400" });
     }
-}
+};

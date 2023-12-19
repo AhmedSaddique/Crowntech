@@ -41,7 +41,7 @@ const ShowCategory = ({ nextStep ,categoryDataProp}) => {
             </label>
               <select
                 onChange={handleSelectChange}
-                className="w-full rounded-md py-3 text-black shadow-lg ring-2"
+                className="w-full rounded-md py-3 bg-white text-black shadow-lg ring-2"
               > 
               <option >
               select Option

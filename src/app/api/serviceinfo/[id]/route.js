@@ -12,6 +12,6 @@ export const DELETE = (req, {params}) =>{
     return serviceinfoDELETE(req, {params});
 }
 
-export const PUT = (req, {params}) =>{
+export const PUT = (req, {params,body }) =>{
     return serviceinfoPUT(req, {params});
 }

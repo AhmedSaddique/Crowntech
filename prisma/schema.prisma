@@ -29,46 +29,44 @@ model Contact{
   createdAt     DateTime @default(now())
 }
 
-
 model Servicecategory {
-  id       Int     @id @default(autoincrement())
-  catName  String
-  createdAt DateTime @default(now())
+  id          Int            @id @default(autoincrement())
+  catName     String
+  createdAt   DateTime       @default(now())
   serviceInfos Serviceinfo[]
 }
 
 model Serviceinfo {
-  id            Int      @id @default(autoincrement())
+  id            Int          @id @default(autoincrement())
   serviceImage  String?
   serviceName   String
   serviceText   String
-  createdAt     DateTime @default(now())
+  createdAt     DateTime     @default(now())
   categoryId    Int
-  category      Servicecategory @relation(fields: [categoryId], references: [id])
+  category      Servicecategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
   servicetabs   Servicetab[]
 }
 
 model Servicetab {
-  id             Int      @id @default(autoincrement())
+  id             Int            @id @default(autoincrement())
   titlehead      String
   title          String
   heading        String
   description    String
   subdata        ServiceSubItem[]
-  createdAt      DateTime @default(now())
+  createdAt      DateTime       @default(now())
   serviceInfoId  Int
-  serviceInfo    Serviceinfo @relation(fields: [serviceInfoId], references: [id])
+  serviceInfos   Serviceinfo    @relation(fields: [serviceInfoId], references: [id], onDelete: Cascade)
   serviceplans   Serviceplan[]
 }
 
 model ServiceSubItem {
-  id               Int      @id @default(autoincrement())
+  id               Int          @id @default(autoincrement())
   link             String?
   description      String
   mainItemId       Int
-  mainItem         Servicetab @relation(fields: [mainItemId], references: [id], onDelete: Cascade)
+  mainItem         Servicetab    @relation(fields: [mainItemId], references: [id], onDelete: Cascade)
 }
-
 model Serviceplan {
   id              Int      @id @default(autoincrement())
   title           String
@@ -79,10 +77,9 @@ model Serviceplan {
   feature         Servicefeature[]
   createdAt       DateTime @default(now())
   tabId           Int
-  tab             Servicetab @relation(fields: [tabId], references: [id])
-  servicefaqs     Servicefaq[] // Add this relation
+  tab             Servicetab @relation(fields: [tabId], references: [id], onDelete: Cascade)
+  servicefaqs     Servicefaq[]
 }
-
 model Servicefeature {
   id              Int         @id @default(autoincrement())
   option          String
@@ -92,10 +89,10 @@ model Servicefeature {
 
 model Servicefaq {
   id              Int      @id @default(autoincrement())
-  Image           String
+  Faqimage           String
   heading         String
   description     String
   createdAt       DateTime @default(now())
   planId          Int?     // Add this field to reference Serviceplan
-  plan            Serviceplan? @relation(fields: [planId], references: [id])
+  plan            Serviceplan? @relation(fields: [planId], references: [id], onDelete: Cascade)
 }

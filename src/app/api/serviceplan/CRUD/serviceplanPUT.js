@@ -6,34 +6,32 @@ const prisma = new PrismaClient();
 export const serviceplanPUT = async (req, { params }) => {
     try {
         const id = parseInt(params.id, 10);
-        const check = await prisma.serviceplan.findUnique({ where: { id } });
-        if (!check) {
-            return new NextResponse(JSON.stringify({
-                error: "Data not found"
-            }), { status: 400 });
-        }
-
-        const jsonData = await req.json();
-        const { feature, ...restData } = jsonData;
-
-
-        await prisma.Servicefeature.deleteMany({ where: { mainItemId: id } });
-
-        const updatedserviceplan = await prisma.serviceplan.update({
-            where: { id },
+        const body = await req.json();
+        const { title, text, price, chooseplan, description, feature, tabId } = body;
+        const serviceplan = await prisma.serviceplan.update({
+            where: {
+                id: parseInt(id, 10),
+            },
             data: {
-                ...restData,
+                title,
+                text,
+                price,
+                chooseplan,
+                description,
                 feature: {
-                    create: feature
-                }
+                    create: feature.map(subItem => ({ ...subItem }))
+                },
+                tabId,
             },
             include: {
-                feature: true
+                feature: true, // Include features in the response
+                tab: true
             }
         });
 
+   
         return new NextResponse(JSON.stringify({
-            success: "Data updated successfully", updatedserviceplan
+            success: "Data updated successfully", serviceplan
         }), { status: 200 });
 
     } catch (error) {

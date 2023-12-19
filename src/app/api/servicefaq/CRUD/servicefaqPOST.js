@@ -1,49 +1,62 @@
-
 import { PrismaClient } from '@prisma/client';
-import { writeFile } from 'fs/promises'; // Import writeFile
 import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
 export const servicefaqPOST = async (req) => {
     try {
-      const data = await req.formData();
-      const file = data.get('file');
-      if (!file) {
-        return NextResponse.json({ message: "Invalid file", success: false, status: 400 });
-      }
+        const body = await req.json();
+        const { Faqimage, heading, description, planId } = body;
 
-    // Process file upload
-    const bytedata = await file.arrayBuffer();
-    const buffer = Buffer.from(bytedata);
-    const path = `./public/uploads/faq/${file.name}`;
-    await writeFile(path, buffer);
+        // Check if the specified planId exists
+        const existingPlan = await prisma.serviceplan.findUnique({
+            where: {
+                id: planId,
+            },
+        });
 
-    // Extract other form data
-    const heading = data.get('heading');
-    const description = data.get('description');
+        if (!existingPlan) {
+            return new NextResponse(
+                JSON.stringify({
+                    error: "Specified planId does not exist",
+                    success: false,
+                    status: 400,
+                }),
+                { status: 400 }
+            );
+        }
 
-    // Create database entry
-    const card = await prisma.servicefaq.create({
-      data: {
-        Image: path, // Use the file path
-        heading,
-        description,
+        const servicefaq = await prisma.servicefaq.create({
+            data: {
+                Faqimage,
+                heading,
+                description,
+                planId,
+            },
+            include: {
+                plan: true,
+            },
+        });
 
-      }
-    });
-
-    return new NextResponse(
-        JSON.stringify({ message: "Post created successfully", card, success: true, status: 200 }),
-        { status: 200 }
-      );
-  
+        // Return a success response with the created servicefaq
+        return new NextResponse(
+            JSON.stringify({
+                success: "Servicefaq saved successfully",
+                servicefaq,
+            }),
+            { status: 201 } // Use 201 Created status code
+        );
     } catch (error) {
-      console.error("Error occurred:", error);
-      return new NextResponse(
-          JSON.stringify({ message: "Error in processing request", details: error.message, success: false, status: 400 }),
-          { status: 400 }
-      );
+        // Handle errors and return an error response
+        console.error("Error occurred:", error);
+        return new NextResponse(
+            JSON.stringify({
+                error: "Error in processing request",
+                details: error.message,
+                success: false,
+                status: 400,
+            }),
+            { status: 400 }
+        );
     }
-  };
-  
+};

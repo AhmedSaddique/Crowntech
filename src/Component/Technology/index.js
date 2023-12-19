@@ -17,7 +17,7 @@ import { motion, useViewportScroll, useTransform } from 'framer-motion';
 const Technology = () => {
   const { theme, setTheme } = useTheme();
   const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1.2]);
+  const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1.1]);
 
   return (
 <>

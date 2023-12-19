@@ -5,44 +5,46 @@ const prisma = new PrismaClient();
 
 export const servicetabPOST = async (req) => {
     try {
-        const items = await req.json(); // Assuming items is the array from frontend
+        const body = await req.json();
+        const { titlehead, title, heading, description, subdata, serviceInfoId } = body;
 
-        // You should loop over each item if you're sending more than one
-        items.forEach(async (item) => {
-            const { titlehead, title, heading, description, subdata } = item;
-
-            if (!Array.isArray(subdata)) {
-                throw new Error("subdata is not an array or is undefined");
-            }
-
-            const servicetab = await prisma.servicetab.create({
-                data: {
-                    titlehead,
-                    title,
-                    heading,
-                    description,
-                    subdata: {
-                        create: subdata.map(subItem => ({
-                            link: subItem.link,
-                            description: subItem.description
-                        }))
-                    }
+        // Create a new servicetab record
+        const servicetab = await prisma.servicetab.create({
+            data: {
+                titlehead,
+                title,
+                heading,
+                description,
+                subdata: {
+                    create: subdata.map(subItem => ({ ...subItem })), // Assuming subdata is an array of ServiceSubItem
                 },
-                include: {
-                    subdata: true // Include sub-items in the response
-                }
-            });
+                serviceInfoId,
+            },
+            include: {
+                subdata: true, // Include the related subdata in the response
+                serviceInfos: true, // Include the related serviceInfo in the response
+            },
         });
 
-        return new NextResponse(JSON.stringify({
-            success: "Data saved successfully", items
-        }), { status: 200 });
-
+        // Return a success response with the created servicetab
+        return new NextResponse(
+            JSON.stringify({
+                success: "Servicetab saved successfully",
+                servicetab,
+            }),
+            { status: 200 }
+        );
     } catch (error) {
-        console.error(error);
-        return new NextResponse(JSON.stringify({
-            error: "Data not saved", message: error.message || error.toString()
-        }), { status: 400 });
+        // Handle errors and return an error response
+        console.error("Error occurred:", error);
+        return new NextResponse(
+            JSON.stringify({
+                error: "Error in processing request",
+                details: error.message,
+                success: false,
+                status: 400,
+            }),
+            { status: 400 }
+        );
     }
 };
-

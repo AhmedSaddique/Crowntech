@@ -4,52 +4,74 @@ import { NextResponse } from 'next/server';
 
 const prisma = new PrismaClient();
 
-export const servicecategoryGET = async (req) => {
+export const servicecategoryGET = async () => {
     try {
-        const servicecategory = await prisma.servicecategory.findMany();
-        return new NextResponse(JSON.stringify({
-            success: "Users fetched successfully", servicecategory },
-            {status :"200"}
-            
-            ))
-        
-    } catch (error) {
-        return new NextResponse(JSON.stringify({
-            error: "Users not fetched", error },
-            {status :"400"}
-            
-            ))
-    }
-};
+        const servicecategories = await prisma.servicecategory.findMany();
+    
+        return new NextResponse(
+          JSON.stringify(
+            {
+              success: 'Data retrieved successfully',
+              servicecategories,
+            },
+            { status: '200' }
+          )
+        );
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        return new NextResponse(
+          JSON.stringify(
+            {
+              error: 'Error fetching data',
+            },
+            { status: '500' }
+          )
+        );
+      } finally {
+        await prisma.$disconnect();
+      }
+    };
 
-export const servicecategoryGetbyID = async (req, {params}) =>{
-
-
+export const servicecategoryGetbyID = async (req, { params }) => {
     try {
         const id = params.id;
         const servicecategory = await prisma.servicecategory.findUnique({
-            where: {
-                id : parseInt(id, 10),
-            }
+          where: {
+            id: parseInt(id, 10),
+          },
         });
-        if(!servicecategory){
-            return new NextResponse(JSON.stringify({
-                error: "User not found", error },
-                {status :"400"}
-                
-                ))
+    
+        if (!servicecategory) {
+          return new NextResponse(
+            JSON.stringify(
+              {
+                error: 'Data not found',
+              },
+              { status: '404' }
+            )
+          );
         }
-        return new NextResponse(JSON.stringify({
-            success: "User fetched successfully", servicecategory },
-            {status :"200"}
-            
-            ))
-    } catch (error) {
-        return new NextResponse(JSON.stringify({
-            error: "User not fetched", error },
-            {status :"400"}
-            
-            ))
-        
-    }
-}
+    
+        return new NextResponse(
+          JSON.stringify(
+            {
+              success: 'Data retrieved successfully',
+              servicecategory,
+            },
+            { status: '200' }
+          )
+        );
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        return new NextResponse(
+          JSON.stringify(
+            {
+              error: 'Error fetching data',
+            },
+            { status: '500' }
+          )
+        );
+      } finally {
+        await prisma.$disconnect();
+      }
+    };

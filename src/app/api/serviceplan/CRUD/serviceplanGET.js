@@ -6,58 +6,76 @@ const prisma = new PrismaClient();
 
 export const serviceplanGET = async (req) => {
     try {
-        const serviceplan = await prisma.serviceplan.findMany({
-            include :{
-                feature: true,
-            }
+        const serviceplans = await prisma.serviceplan.findMany({
+            include: {
+                feature: true, // Include features in the response
+                tab: true // Include the related tab in the response
+            },
         });
 
-        return new NextResponse(JSON.stringify({
-            success: "Data fetched successfully", serviceplan },
-            {status :"200"}
-            
-            ))
-        
+        // Return a success response with the list of serviceplans
+        return new NextResponse(
+            JSON.stringify({
+                success: true,
+                serviceplans,
+            }),
+            { status: 200 }
+        );
     } catch (error) {
-        return new NextResponse(JSON.stringify({
-            error: "Data not fetched", error },
-            {status :"400"}
-            
-            ))
+        // Handle errors and return an error response
+        console.error("Error occurred:", error);
+        return new NextResponse(
+            JSON.stringify({
+                error: "Error in processing request",
+                details: error.message,
+                success: false,
+                status: 500,
+            }),
+            { status: 500 }
+        );
     }
 };
 
 export const serviceplanGetbyID = async (req, {params}) =>{
-
-
     try {
-        const id = params.id;
+        const { id } = req.params; // Assuming 'id' is a parameter in your route
         const serviceplan = await prisma.serviceplan.findUnique({
-            where: {
-                id : parseInt(id, 10),
+            where: { id: parseInt(id) },
+            include: {
+                feature: true, // Include features in the response
+                tab: true // Include the related tab in the response
             },
-            include:{
-                feature: true,
-            }
         });
-        if(!serviceplan){
-            return new NextResponse(JSON.stringify({
-                error: "Data not found", error },
-                {status :"400"}
-                
-                ))
+
+        if (!serviceplan) {
+            return new NextResponse(
+                JSON.stringify({
+                    error: "Serviceplan not found",
+                    success: false,
+                }),
+                { status: 404 }
+            );
         }
-        return new NextResponse(JSON.stringify({
-            success: "Data fetched successfully", serviceplan },
-            {status :"200"}
-            
-            ))
+
+        // Return a success response with the found serviceplan
+        return new NextResponse(
+            JSON.stringify({
+                success: true,
+                serviceplan,
+            }),
+            { status: 200 }
+        );
     } catch (error) {
-        return new NextResponse(JSON.stringify({
-            error: "User not fetched", error },
-            {status :"400"}
-            
-            ))
-        
+        // Handle errors and return an error response
+        console.error("Error occurred:", error);
+        return new NextResponse(
+            JSON.stringify({
+                error: "Error in processing request",
+                details: error.message,
+                success: false,
+                status: 500,
+            }),
+            { status: 500 }
+        );
     }
-}
+};
