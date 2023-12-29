@@ -1,7 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from '@/app/prisma';
 import { NextResponse } from 'next/server';
 
-const prisma = new PrismaClient();
 
 export const servicecategoryPOST = async (req) => {
     const body = await req.json();

@@ -4,47 +4,46 @@ import { NextResponse } from 'next/server';
 const prisma = new PrismaClient();
 
 export const servicetabPOST = async (req) => {
-    try {
-        const body = await req.json();
-        const { titlehead, title, heading, description, subdata, serviceInfoId } = body;
+  try {
+    const bodyArray = await req.json();
+    console.log('Received request body:', bodyArray);
 
-        // Create a new servicetab record
-        const servicetab = await prisma.servicetab.create({
-            data: {
-                titlehead,
-                title,
-                heading,
-                description,
-                subdata: {
-                    create: subdata.map(subItem => ({ ...subItem })), // Assuming subdata is an array of ServiceSubItem
-                },
-                serviceInfoId,
-            },
-            include: {
-                subdata: true, // Include the related subdata in the response
-                serviceInfos: true, // Include the related serviceInfo in the response
-            },
-        });
-
-        // Return a success response with the created servicetab
-        return new NextResponse(
-            JSON.stringify({
-                success: "Servicetab saved successfully",
-                servicetab,
-            }),
-            { status: 200 }
-        );
-    } catch (error) {
-        // Handle errors and return an error response
-        console.error("Error occurred:", error);
-        return new NextResponse(
-            JSON.stringify({
-                error: "Error in processing request",
-                details: error.message,
-                success: false,
-                status: 400,
-            }),
-            { status: 400 }
-        );
+    // Check if bodyArray is actually an array
+    if (!Array.isArray(bodyArray)) {
+      throw new Error("Request body must be an array of objects");
     }
+
+    const responses = await Promise.all(bodyArray.map(async (body) => {
+      const { title, heading, description, subdata, serviceInfoId } = body;
+
+      // Your existing logic to handle subdata
+      let ServiceSubItem = subdata.map(subItem => ({
+        link: subItem.link,
+        description: subItem.description
+      }));
+
+      return prisma.servicetab.create({
+        data: {
+          title,
+          heading,
+          description,
+          subdata: { create: ServiceSubItem },
+          serviceInfos: { connect: { id: serviceInfoId } },
+        },
+        include: { subdata: true, serviceInfos: true },
+      });
+    }));
+
+    return new NextResponse(
+      JSON.stringify({ success: "Servicetabs saved successfully", responses }),
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error(error);
+    // Correct error response using NextResponse
+    return new NextResponse(
+      JSON.stringify({ error: error.message }),
+      { status: 400 }
+    );
+  }
 };

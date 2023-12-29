@@ -6,7 +6,13 @@ const prisma = new PrismaClient();
 
 export const servicetabGET = async (req) => {
   try {
-    const servicetabs = await prisma.servicetab.findMany();
+    const servicetabs = await prisma.servicetab.findMany({
+      include: {
+        subdata: true,
+        serviceInfos: true,
+      },
+    });
+    
     return new NextResponse(
         JSON.stringify({
             success: true,

@@ -5,45 +5,50 @@ const prisma = new PrismaClient();
 
 export const serviceplanPOST = async (req) => {
     try {
-        const body = await req.json();
-        const { title, text, price, chooseplan, description, feature, tabId } = body;
+        const bodyArray = await req.json();
+        console.log('Received request body:', bodyArray);
 
-        const serviceplan = await prisma.serviceplan.create({
-            data: {
-                title,
-                text,
-                price,
-                chooseplan,
-                description,
-                feature: {
-                    create: feature.map(subItem => ({ ...subItem }))
+        // Check if bodyArray is actually an array
+        if (!Array.isArray(bodyArray)) {
+            throw new Error("Request body must be an array of objects");
+        }
+
+        const responses = await Promise.all(bodyArray.map(async (body) => {
+            const { title, text, price, chooseplan, description, feature, tabId } = body;
+
+            // Process the feature array, assuming each feature object contains necessary fields
+            const processedFeatures = feature.map(f => ({ ...f }));
+
+            return prisma.serviceplan.create({
+                data: {
+                    title,
+                    text,
+                    price,
+                    chooseplan,
+                    description,
+                    feature: {
+                        create: processedFeatures
+                    },
+                    tab: {
+                        connect: { id: tabId }
+                    },
                 },
-                tabId,
-            },
-            include: {
-                feature: true, // Include features in the response
-                tab: true
-            }
-        });
+                include: {
+                    feature: true,
+                    tab: true
+                }
+            });
+        }));
 
-        // Return a success response with the created serviceplan
+        // Return a success response with all created serviceplans
         return new NextResponse(
-            JSON.stringify({
-                success: "Serviceplan saved successfully",
-                serviceplan,
-            }),
-            { status: 201 } // Use 201 Created status code
+            JSON.stringify({ success: "Serviceplans saved successfully", responses }),
+            { status: 201 }
         );
     } catch (error) {
-        // Handle errors and return an error response
         console.error("Error occurred:", error);
         return new NextResponse(
-            JSON.stringify({
-                error: "Error in processing request",
-                details: error.message,
-                success: false,
-                status: 400,
-            }),
+            JSON.stringify({ error: error.message }),
             { status: 400 }
         );
     }

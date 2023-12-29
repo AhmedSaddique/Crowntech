@@ -1,8 +1,6 @@
 import { servicecategoryGET } from "./CRUD/servicecategoryGET";
 import { servicecategoryPOST } from "./CRUD/servicecategoryPOST";
 
-
-
 export const POST = async (req) =>{
     return servicecategoryPOST(req);
 }

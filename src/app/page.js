@@ -14,7 +14,6 @@ import { useContext } from "react";
 export default function Home() {
   const { Header } = useContext(NavbarContext);
   return (
- <>
  <LayoutProvider>
   <Header/>
     <Hero/>
@@ -32,6 +31,5 @@ export default function Home() {
   <Testimonial/>
   <Footer/>
   </LayoutProvider>
- </>
   )
 }
