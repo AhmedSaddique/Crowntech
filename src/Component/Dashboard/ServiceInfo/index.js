@@ -5,10 +5,10 @@ import { InputForm } from "@/Component/Input";
 import { CiImageOn } from "react-icons/ci";
 import { MdOutlineSubtitles, MdOutlineTextFields } from "react-icons/md";
 import axios from "axios";
-import { useidContext } from "@/Component/ServiceContext";
+import { UseidContext } from "@/Component/ServiceContext";
 
 const ServiceInfo = ({ nextStep, prevStep }) => {
-  const { id, setid } = useidContext();
+  const { id, setid } = UseidContext();
   const [serviceData, setServiceData] = useState({
     serviceImage: "",
     serviceName: "",

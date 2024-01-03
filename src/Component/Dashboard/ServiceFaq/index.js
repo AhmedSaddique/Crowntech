@@ -3,11 +3,11 @@ import Button from "@/Component/Button";
 import { InputForm } from "@/Component/Input";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import axios from "axios";
-import { useidContext } from "@/Component/ServiceContext";
+import { UseidContext } from "@/Component/ServiceContext";
 import { useRouter } from "next/navigation"; // Corrected import for useRouter
 const ServiceFaq = ({ prevStep }) => {
   const router = useRouter();
-  const { id } = useidContext();
+  const { id, setid } = UseidContext();
   const [faqs, setFaqs] = useState([
     { heading: "", description: "", file: null },
   ]);
@@ -53,6 +53,7 @@ const ServiceFaq = ({ prevStep }) => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(response.data);
+      setid(null);
       router.push('/dashboard');
       // Redirect or update UI after success
     } catch (error) {

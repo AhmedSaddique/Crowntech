@@ -5,10 +5,10 @@ import ServiceInfo from '../ServiceInfo';
 import ServiceTab from '../ServiceTab';
 import ServiceFaq from '../ServiceFaq';
 import ServicePlan from '../SerivcePlan';
-import { useidContext } from '@/Component/ServiceContext'; // Adjust the import path based on your project structure
+import { UseidContext } from '@/Component/ServiceContext'; // Adjust the import path based on your project structure
 
 const AddService = () => {
-  const { id} = useidContext();
+  const { id} = UseidContext();
   const [step, setStep] = useState(1);
 
   const nextStep = (serviceInfoId ) => {

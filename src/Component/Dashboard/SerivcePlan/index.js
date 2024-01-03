@@ -1,13 +1,13 @@
 import Button from '@/Component/Button';
 import { InputForm } from '@/Component/Input';
-import { useidContext } from '@/Component/ServiceContext';
+import { UseidContext } from '@/Component/ServiceContext';
 import axios from 'axios';
 import React, { useState } from 'react'
 import { IoIosRemoveCircleOutline } from 'react-icons/io';
 import { MdOutlineSubtitles } from 'react-icons/md';
 
 const ServicePlan = ({nextStep , prevStep}) => {
-  const { id , setid } = useidContext();
+  const { id , setid } = UseidContext();
   const [loading, setLoading] = useState(false);
     const [items, setItems] = useState([
         {

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useidContext } from "@/Component/ServiceContext";
+import { UseidContext } from "@/Component/ServiceContext";
 
 const ShowCategory = ({ nextStep, categoryDataProp }) => {
   const [categoryData, setCategoryData] = useState([] || categoryDataProp);
-  const { setid } = useidContext();
+  const { setid } = UseidContext();
   const [selectedCategoryId, setSelectedCategoryId] = useState();
 
 

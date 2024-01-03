@@ -4,6 +4,7 @@ import React, { useState, Fragment } from 'react';
 import { MdOutlineKeyboardArrowDown, } from "react-icons/md";
 import DropDown from '../DropDown';
 import MegaMenu from '../MegaMenu';
+import ServiceContext from '../ServiceContext';
 
 
 const Navlink = ({ onClose }) => {
@@ -39,6 +40,7 @@ const Navlink = ({ onClose }) => {
             },
           ]}
         />
+        <ServiceContext>
         <MegaMenu
           onLinkClick={onClose}
           className={"  h-fit "}
@@ -52,6 +54,8 @@ const Navlink = ({ onClose }) => {
           }
           
         />
+        </ServiceContext>
+       
       <Link className='font-semibold' href="/product" onClick={onClose}>
         Product
       </Link>

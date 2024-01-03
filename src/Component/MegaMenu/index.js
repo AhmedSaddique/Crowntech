@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { HeadingH4, HeadingH5, HeadingH6 } from "../Heading";
 import MegaData from "../MegaData";
 import axios from "axios";
+import ServiceContext from "../ServiceContext";
 
 const MegaMenu = ({
   array,
@@ -35,7 +36,6 @@ const MegaMenu = ({
     fetchData();
   }, []);
 
-
   const dropdownRef = useRef(null);
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -57,7 +57,7 @@ const MegaMenu = ({
   const handleTabClick = (categoryId) => {
     setActiveCategoryId(categoryId);
   };
-  console.log(activeCategoryId);
+ 
   return (
     <div className={`inline-block  ${textSize}`}>
       <button
@@ -84,7 +84,7 @@ const MegaMenu = ({
           </div>
           <div className="flex gap-3 h-screen">
             <div className={` ${className}  p-2 pt-5 w-full md:w-3/12  `}>
-            {servicecat.map((category, index) => (
+              {servicecat.map((category, index) => (
                 <div
                   key={category.id}
                   onClick={() => handleTabClick(category.id)}
@@ -101,11 +101,13 @@ const MegaMenu = ({
             <div
               className={`${className} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-9/12 pb-[30vh]`}
             >
-               {activeCategoryId && (
-                <MegaData
-                  categoryId={activeCategoryId}
-                  onLinkClick={onLinkClick}
-                />
+              {activeCategoryId && (
+                <ServiceContext>
+                  <MegaData
+                    categoryId={activeCategoryId}
+                    onLinkClick={onLinkClick}
+                  />
+                </ServiceContext>
               )}
             </div>
           </div>

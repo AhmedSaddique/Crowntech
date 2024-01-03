@@ -14,42 +14,18 @@ import Plan from "../Plan";
 import Faq from "../Faq";
 import axios from "axios";
 import ServiceTab from "../ServiceTab";
+import ServiceContext from "../ServiceContext";
 
 const ServiceHero = ({ serviceInfoId }) => {
   const [serviceInfo, setServiceInfo] = useState(null);
+  const [serviceTabId, setServiceTabId] = useState(null);
+  const [serviceplanId, setServiceplanId] = useState(null);
   const [activeinfoId, setActiveinfoId] = useState(null);
 
-  useEffect(() => {
-    // Check if window is defined (ensures SSR compatibility)
-    if (typeof window !== "undefined") {
-      const urlParams = new URLSearchParams(window.location.search);
-      const id = urlParams.get("id"); // Assuming your URL parameter is named 'id'
-
-      console.log("Service Info ID from URL:", id); // Console log the ID from URL
-
-      if (id) {
-        axios.get(`/api/serviceinfo/${id}`)
-          .then((response) => {
-            setServiceInfo(response.data);
-            console.log("Fetched Service Info Data:", response.data); // Console log the fetched data
-          })
-          .catch((error) => console.error("Error:", error));
-      }
-    }
-  }, []);
 
   const [showCard, setShowCard] = useState(true);
   const { Link } = Anchor;
-  useEffect(() => {
-    const handleResize = () => {
-      setShowCard(window.innerWidth >= 768); // Adjust the breakpoint as needed
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+ 
 
   const toggleCard = () => {
     setShowCard((prev) => !prev);
@@ -214,15 +190,16 @@ const ServiceHero = ({ serviceInfoId }) => {
             </div>
 
             <div id="media">
-              <ServiceTab activeinfoId={activeinfoId}/>
+              
+              <ServiceTab setServiceTabId={setServiceTabId}/>
             </div>
 
-            {/* <div id="plan" className='mt-5'>
-              <Plan/>
+            <div id="plan" className='mt-5'>
+              <Plan serviceTabId={serviceTabId} setServiceplanId={setServiceplanId}/>
           </div>
           <div id="faq" className='mt-5'>
-              <Faq/>
-          </div> */}
+              <Faq serviceplanId={serviceplanId}/>
+          </div>
           </div>
         </Container>
       </div>

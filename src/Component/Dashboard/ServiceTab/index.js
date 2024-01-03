@@ -3,12 +3,12 @@ import axios from "axios";
 
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import { MdOutlineSubtitles } from "react-icons/md";
-import { useidContext } from "@/Component/ServiceContext";
+import { UseidContext } from "@/Component/ServiceContext";
 import { InputForm } from "@/Component/Input";
 import Button from "@/Component/Button";
 
 const ServiceTab = ({ nextStep, prevStep }) => {
-  const { id , setid } = useidContext();
+  const { id , setid } = UseidContext();
   const [loading, setLoading] = useState(false);
   const [tabsData, setTabsData] = useState([
     {
