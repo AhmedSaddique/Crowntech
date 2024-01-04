@@ -14,14 +14,34 @@ import Plan from "../Plan";
 import Faq from "../Faq";
 import axios from "axios";
 import ServiceTab from "../ServiceTab";
-import ServiceContext from "../ServiceContext";
+import { UseidContext } from "../ServiceContext";
 
-const ServiceHero = ({ serviceInfoId }) => {
+
+const ServiceHero = () => {
   const [serviceInfo, setServiceInfo] = useState(null);
   const [serviceTabId, setServiceTabId] = useState(null);
   const [serviceplanId, setServiceplanId] = useState(null);
-  const [activeinfoId, setActiveinfoId] = useState(null);
+  const { id } = UseidContext();
+  console.log(id)
 
+  useEffect(() => {
+    // Fetch serviceInfo data based on id from context
+    const fetchServiceInfo = async () => {
+      try {
+        const response = await axios.get(`/api/serviceinfo`);
+        // Filter serviceInfo based on id
+        const filteredServiceInfo = response.data.serviceinfos.filter(
+          (service) => service.id === id
+        );
+        setServiceInfo(filteredServiceInfo);
+      } catch (error) {
+        console.error('Error getting service info:', error);
+      }
+    };
+  
+    fetchServiceInfo();
+  }, [id]);
+  
 
   const [showCard, setShowCard] = useState(true);
   const { Link } = Anchor;
@@ -165,28 +185,26 @@ const ServiceHero = ({ serviceInfoId }) => {
         <Container className={`w-full md:w-10/12 `}>
           <div className={`p-1 md:p-3 space-y-10  `}>
             <div id="service">
-              <div className={`pt-5 w-full `}>
-                <div className="space-y-4 ">
-                  <Para18
-                    className={"font-bold text-justify"}
-                    title={"________ Service"}
-                  />
-                  <div className="-space-y-3">
-                    <HeadingH1 title={"Advanced analytics to grow "} />
-                    <HeadingH1 title={"your business"} />
+            {serviceInfo !== null ? (
+                serviceInfo.map((service , index) => (
+                  <div className={`pt-5 w-full `}>
+                    <div className="space-y-4 ">
+                      <Para18
+                        className={"font-bold text-justify"}
+                        title={"________ Service"}
+                      />
+                      <div className="-space-y-3">
+                        <HeadingH1 title={service.serviceName} />
+                      </div>
+                      <Para16
+                        title={service.serviceText}
+                      />
+                    </div>
                   </div>
-                  <Para16
-                    title={
-                      "Collaborate, plan projects and manage resources with powerful features that your whole team can use."
-                    }
-                  />
-                  <Para16
-                    title={
-                      " The latest news, tips and advice to help you run your business with less fuss."
-                    }
-                  />
-                </div>
-              </div>
+                ))
+              ) : (
+                <p>Loading service information...</p>
+              )}
             </div>
 
             <div id="media">

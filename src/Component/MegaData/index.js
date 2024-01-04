@@ -14,14 +14,19 @@ const MegaData = ({ categoryId }) => {
   const [filteredServiceInfo, setFilteredServiceInfo] = useState([]);
   const { id, setid } = UseidContext();
   const router = useRouter();
+  
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...'; // Truncate text and add ellipsis
+    }
+    return text;
+  };
 
   useEffect(() => {
     const fetchServiceInfo = async () => {
       try {
         const response = await axios.get(`/api/serviceinfo`);
         setserviceinfo(response.data.serviceinfos);
-        // const newid = response.data.serviceinfos.id;
-        // setid(newid);
         const firstFilteredService = response.data.serviceinfos.find(service => service.id === id);
         if (firstFilteredService && firstFilteredService.id) {
           setid(firstFilteredService.id);
@@ -53,12 +58,12 @@ const MegaData = ({ categoryId }) => {
       ))}
 
       {filteredServiceInfo.map((service, index) => (
-        <div key={service.id} onClick={() => handleServiceClick(service.id)} className="flex flex-col sm:flex-row border md:border-none mt-2 md:mt-0 mb-3 md:mb-0 duration-300 transition gap-3 rounded-md hover:bg-primary-blue100 hover:text-white px-2 py-2">
-          <Image className='w-[30px] h-[30px] rounded-full' width={200} height={200}
+        <div key={service.id} onClick={() => handleServiceClick(service.id)} className="flex flex-col sm:flex-row border md:border-none mt-2 md:mt-0 mb-3 md:mb-0 duration-300 transition gap-3 rounded-md hover:bg-primary-blue100 hover:text-white px-2 py-2 cursor-pointer">
+          <Image className='w-[30px] h-[30px] object-cover bg-center rounded-full' width={200} height={200}
             src={`/${service.serviceImage.replace("public/", "")}`} alt={`/${service.serviceImage.replace("public/", "")}`} />
           <div>
             <HeadingH6 title={service.serviceName} />
-            <Para12 title={service.serviceText} />
+            <Para12 title={truncateText(service.serviceText, 100)} />
           </div>
         </div>
       ))}
