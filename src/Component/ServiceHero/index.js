@@ -187,7 +187,7 @@ const ServiceHero = () => {
             <div id="service">
             {serviceInfo !== null ? (
                 serviceInfo.map((service , index) => (
-                  <div className={`pt-5 w-full `}>
+                  <div className={`pt-5 w-full `} key={service.id || index+ 1  }>
                     <div className="space-y-4 ">
                       <Para18
                         className={"font-bold text-justify"}
