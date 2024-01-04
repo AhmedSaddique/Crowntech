@@ -14,7 +14,7 @@ const MegaData = ({ categoryId }) => {
   const [filteredServiceInfo, setFilteredServiceInfo] = useState([]);
   const { id, setid } = UseidContext();
   const router = useRouter();
-  
+
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
       return text.substring(0, maxLength) + '...'; // Truncate text and add ellipsis
@@ -51,19 +51,18 @@ const MegaData = ({ categoryId }) => {
 
   return (
     <>
-      {Aboutcore.Category.map((data) => (
-        <div key={data.id} className='flex items-center p-3'>
-          <HeadingH4 title={data.cat || "categ"} />
+      
+        <div className='flex items-center p-3'>
+          <HeadingH4 title={"Core Services"} />
         </div>
-      ))}
 
       {filteredServiceInfo.map((service, index) => (
-        <div key={service.id} onClick={() => handleServiceClick(service.id)} className="flex flex-col sm:flex-row border md:border-none mt-2 md:mt-0 mb-3 md:mb-0 duration-300 transition gap-3 rounded-md hover:bg-primary-blue100 hover:text-white px-2 py-2 cursor-pointer">
+        <div key={index} onClick={() => handleServiceClick(service.id)} className="flex flex-col sm:flex-row border md:border-none mt-2 md:mt-0 mb-3 md:mb-0 duration-300 transition gap-3 rounded-md hover:bg-primary-blue100 hover:text-white px-2 py-2 cursor-pointer">
           <Image className='w-[30px] h-[30px] object-cover bg-center rounded-full' width={200} height={200}
             src={`/${service.serviceImage.replace("public/", "")}`} alt={`/${service.serviceImage.replace("public/", "")}`} />
           <div>
             <HeadingH6 title={service.serviceName} />
-            <Para12 title={truncateText(service.serviceText, 100)} />
+            <Para12 title={truncateText(service.serviceText, 80)} />
           </div>
         </div>
       ))}

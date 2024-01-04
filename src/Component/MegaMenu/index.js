@@ -71,22 +71,22 @@ const MegaMenu = ({
       </button>
       {isOpen && (
         <div
-          className={`absolute top-0 ${alignment}  z-20   shadow-lg ${
+          className={`absolute top-0 lg:top-auto lg:mt-5 xl:mt-7 ${alignment}  z-20   shadow-lg ${
             theme === "dark" ? "bg-primary-blue500" : "bg-primary-white"
           }`}
           ref={dropdownRef}
         >
           <div
             onClick={toggleMenu}
-            className="border-2 hover:scale-105 hover:border-primary-blue100 duration-300 transition rounded-md flex p-2 items-center justify-center w-10"
+            className="border-2 hover:scale-105 m-2 hover:border-primary-blue100 duration-300 transition rounded-md flex p-2 items-center justify-center w-10"
           >
             <ImCross />
           </div>
-          <div className="flex gap-3 h-screen">
-            <div className={` ${className}  p-2 pt-5 w-full md:w-3/12  `}>
+          <div className="flex gap-1 " style={{width:"100%" , maxHeight:"calc(100vh - 65px)" }}>
+            <div className={` ${className}  p-1 overflow-y-scroll lg:max-h-[300px] xl:max-h-[400px] xxl:xl:max-h-max pt-5 w-full md:w-3/12  `}>
               {servicecat.map((category, index) => (
                 <div
-                  key={category.id}
+                  key={index}
                   onClick={() => handleTabClick(category.id)}
                   className={`${
                     activeCategoryId === category.id

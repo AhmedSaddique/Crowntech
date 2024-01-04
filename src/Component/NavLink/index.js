@@ -44,7 +44,7 @@ const Navlink = ({ onClose }) => {
         <MegaMenu
           onLinkClick={onClose}
           className={"  h-fit "}
-          alignment="md:overflow-y-hidden z-50 overflow-y-scroll h-screen w-full gap-3 left-0 p-1 md:p-3 lg:p-5 sm:text-start   "
+          alignment="md:overflow-y-hidden z-50 overflow-y-scroll w-full gap-3 left-0 sm:text-start   "
           text="Service"
           icon={
             <MdOutlineKeyboardArrowDown
