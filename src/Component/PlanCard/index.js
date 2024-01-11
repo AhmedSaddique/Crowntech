@@ -51,14 +51,14 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
           className={`mt-10 mb-10 gap-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 `}
         >
           {filteredServiceplan &&
-            filteredServiceplan.map((items, indexCard) => (
+            filteredServiceplan.map((items, index) => (
               <div
                 className={`  space-y-2 shadow  mb-5 rounded-lg p-4 hover:scale-105 transition duration-300 ${
                   theme === "dark"
                     ? " bg-primary-blue100 "
                     : "  bg-primary-white"
                 } `}
-                key={indexCard + 1 || items.id}
+                key={index}
               >
                 <div className="">
                   <HeadingH3 title={items.title} />
@@ -83,7 +83,7 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
 
                 {items.feature.map((items, index) => (
                   <>
-                    <div className="flex" key={index + 1 || items.id}>
+                    <div className="flex" key={index}>
                       <TiTick size={20} />
                       <Para14 title={items.option} />
                     </div>

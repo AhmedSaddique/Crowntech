@@ -18,6 +18,7 @@ import Navlink from '../NavLink';
 import ThemeToggle from '../ThemeToggle';
 import Button from '../Button';
 import { motion } from 'framer-motion';
+import HeaderServiceTab from '../HeaderServiceTab';
 
 
 const Header = ({ className }) => {
@@ -63,8 +64,8 @@ const Header = ({ className }) => {
     },
     {
       key: '3',
-      label: 'Compute',
-      children: <TabsComponent />,
+      label: 'Service',
+      children: <HeaderServiceTab />,
     },
   ];
   const handleCloseDrawer = () => {
@@ -125,9 +126,7 @@ const Header = ({ className }) => {
     <Link className='font-normal' href="/login">
       Login
     </Link>
-    <Link className='font-normal' href="/dashboard">
-      Dashboard
-    </Link>
+    
   </motion.div>
 </Container>
 

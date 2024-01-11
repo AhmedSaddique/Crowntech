@@ -22,7 +22,7 @@ const ServiceHero = () => {
   const [serviceTabId, setServiceTabId] = useState(null);
   const [serviceplanId, setServiceplanId] = useState(null);
   const { id } = UseidContext();
-  console.log(id)
+
 
   useEffect(() => {
     // Fetch serviceInfo data based on id from context
@@ -116,28 +116,28 @@ const ServiceHero = () => {
                 onClick={closeCard}
                 className={theme === "dark" ? "light-theme" : " dark-theme"}
               >
-                {tabshow.map((items, index) => (
+                {tabshow.map((anch, index) => (
                   <Link
-                    key={items.id || index + 1}
-                    href={items.href}
-                    title={items.title}
+                    key={anch.id || index + 1}
+                    href={anch.href}
+                    title={anch.title}
                   />
                 ))}
               </Anchor>
               <hr className="mt-5" />
               <div className={` text-16 font-medium p-3 space-y-3`}>
-                {tablink.map((items, index) => (
+                {tablink.map((anch, index) => (
                   <NextLink
-                    key={items.id || index + 1}
+                    key={anch.id || index + 1}
                     className={` ${
                       theme === "dark"
                         ? " hover:text-primary-blue100"
                         : "hover:text-primary-blue100"
                     } flex gap-2`}
-                    href={`${items.href}`}
+                    href={`${anch.href}`}
                   >
-                    {items.icon}
-                    {items.title}
+                    {anch.icon}
+                    {anch.title}
                   </NextLink>
                 ))}
               </div>
@@ -154,28 +154,28 @@ const ServiceHero = () => {
               affix={false}
               className={theme === "dark" ? "light-theme" : " dark-theme"}
             >
-              {tabshow.map((items, index) => (
+              {tabshow.map((anch, index) => (
                 <Link
-                  key={items.id || index + 1}
-                  href={items.href}
-                  title={items.title}
+                  key={anch.id || index + 1}
+                  href={anch.href}
+                  title={anch.title}
                 />
               ))}
             </Anchor>
             <hr className="mt-5" />
             <div className={` text-16 font-medium p-3 space-y-3`}>
-              {tablink.map((items, index) => (
+              {tablink.map((anch, index) => (
                 <NextLink
-                  key={items.id || index + 1}
+                  key={anch.id || index + 1}
                   className={` ${
                     theme === "dark"
                       ? " hover:text-primary-blue100"
                       : " hover:text-primary-blue100"
                   } flex gap-2`}
-                  href={`${items.href}`}
+                  href={`${anch.href}`}
                 >
-                  {items.icon}
-                  {items.title}
+                  {anch.icon}
+                  {anch.title}
                 </NextLink>
               ))}
             </div>
@@ -187,7 +187,7 @@ const ServiceHero = () => {
             <div id="service">
             {serviceInfo !== null ? (
                 serviceInfo.map((service , index) => (
-                  <div className={`pt-5 w-full `} key={service.id || index+ 1  }>
+                  <div className={`pt-5 w-full `} key={index}>
                     <div className="space-y-4 ">
                       <Para18
                         className={"font-bold text-justify"}
