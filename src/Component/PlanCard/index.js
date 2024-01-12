@@ -61,11 +61,15 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
                 key={index}
               >
                 <div className="">
-                  <HeadingH3 title={items.title} />
+                  <HeadingH3 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={items.title} />
                   <p className="font-normal">{items.text}</p>
                 </div>
                 <div>
-                  <HeadingH4 title={items.price} />
+                  <HeadingH4 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={items.price} />
                   <p className="font-normal">{items.description}</p>
                 </div>
                 <div>
@@ -73,23 +77,29 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
                 </div>
                 <Button
                   text={"Choose Plan"}
-                  className={`w-full hover:scale-105 justify-center flex ${
+                  className={`w-full  justify-center flex ${
                     theme === "dark"
                       ? "bg-primary-white text-black"
                       : " bg-primary-blue200 hover:bg-primary-blue300 text-white"
                   }  border-none `}
                 />
-                <HeadingH4 title={"Features"} />
+                <HeadingH4 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={"Features"} />
 
                 {items.feature.map((items, index) => (
                   <>
                     <div className="flex" key={index}>
                       <TiTick size={20} />
-                      <Para14 title={items.option} />
+                      <Para14  initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={items.option} />
                     </div>
                   </>
                 ))}
-                <Para12
+                <Para12 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }}
                   title={
                     "This is project starting Price it will be increase on project scalability."
                   }

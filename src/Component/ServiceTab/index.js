@@ -42,7 +42,11 @@ const ServiceTab = ({setServiceTabId}) => {
 
   return (
     <>
-      <HeadingH3 title={'Media content storage and delivery'}/>
+    { filteredServicetabs &&
+      <>
+      <HeadingH3 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={'Service Information'}/>
       <Tabs defaultActiveKey="1" tabBarStyle={{ border: 'none' }}>
         {filteredServicetabs.map((item, index) => (
           <TabPane 
@@ -53,12 +57,18 @@ const ServiceTab = ({setServiceTabId}) => {
             key={index + 1}
           >
             <div className={`space-y-3 ${theme === 'dark' ? 'text-primary-white' : 'text-primary-black'}`}>
-              <HeadingH4 title={item.heading} />
-              <Para16 title={item.description}/>
+              <HeadingH4 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={item.heading} />
+              <Para16 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={item.description}/>
               <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 pt-5'>
                 {item.subdata.map((subItem, subIndex) => (
                   <div className='border-t-2 p-2 shadow-md backdrop-blur-3xl' key={subIndex + 1}>
-                    <Para14 title={subItem.description}/>
+                    <Para14 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={subItem.description}/>
                   </div>
                 ))}
               </div>
@@ -66,6 +76,8 @@ const ServiceTab = ({setServiceTabId}) => {
           </TabPane>
         ))}
       </Tabs>
+      </>}
+
     </>
   );
 };

@@ -55,7 +55,9 @@ const Faq = ({serviceplanId}) => {
       <div className="bg-faq bg-no-repeat bg-right-top ">
         <Container>
           <div className="pt-32 ">
-            <HeadingH1 title={"Frequently asked questions"} />
+            <HeadingH1 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={"Frequently asked questions"} />
           </div>
           {/* ... other static elements ... */}
           <div className="flex pt-10 md:gap-0 lg:gap-4 flex-wrap sm:flex-nowrap">
@@ -80,7 +82,9 @@ const Faq = ({serviceplanId}) => {
                         className="relative hover:scale-105 duration-300 transition bottom-0 md:bottom-8 right-0 md:right-8"
                         size={30}
                       />
-                      <HeadingH6
+                      <HeadingH6 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }}
                         className="relative right-0 md:right-6 pt-3"
                         title={item.heading}
                       />
@@ -95,7 +99,9 @@ const Faq = ({serviceplanId}) => {
                   </button>
                   {openAccordionIndex === index && (
                     <div className="p-2 relative bottom-4">
-                      <Para14 title={item.description} />
+                      <Para14 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={item.description} />
                     </div>
                   )}
                 </div>

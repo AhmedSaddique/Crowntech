@@ -18,7 +18,9 @@ module.exports = {
     
     extend: {
   
-
+      aspectRatio: {
+        '3/2': '3 / 2',
+      },
       animation: {
         'infinite-scroll': 'infinite-scroll 25s linear infinite',
         'bounce': 'bounce 3s linear infinite',

@@ -49,22 +49,22 @@ model Serviceinfo {
 
 model Servicetab {
   id             Int            @id @default(autoincrement())
-  title          String
-  heading        String
-  description    String
-  subdata        ServiceSubItem[] 
+  title          String?
+  heading        String?
+  description    String?
+  subdata        ServiceSubItem[]
   createdAt      DateTime       @default(now())
-  serviceInfoId  Int
-  serviceInfos   Serviceinfo    @relation(fields: [serviceInfoId], references: [id], onDelete: Cascade)
+  serviceInfoId  Int?
+  serviceInfos   Serviceinfo?    @relation(fields: [serviceInfoId], references: [id], onDelete: Cascade)
   serviceplans   Serviceplan[]
 }
 
 model ServiceSubItem {
   id               Int          @id @default(autoincrement())
-  link             String
-  description      String
+  link             String?
+  description      String?
   mainItemId       Int
-  mainItem         Servicetab    @relation(fields: [mainItemId], references: [id], onDelete: Cascade)
+  mainItem         Servicetab?    @relation(fields: [mainItemId], references: [id], onDelete: Cascade)
 }
 model Serviceplan {
   id              Int      @id @default(autoincrement())
@@ -88,9 +88,9 @@ model Servicefeature {
 
 model Servicefaq {
   id              Int      @id @default(autoincrement())
-  Faqimage        String
-  heading         String
-  description     String
+  Faqimage        String?
+  heading         String?
+  description     String?
   createdAt       DateTime @default(now())
   planId          Int?     // Add this field to reference Serviceplan
   plan            Serviceplan? @relation(fields: [planId], references: [id], onDelete: Cascade)

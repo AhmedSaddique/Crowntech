@@ -94,7 +94,9 @@ const MegaMenu = ({
                       : ""
                   } p-2 rounded-md mt-2 mb-2 hover:bg-primary-blue200 hover:text-primary-white transition duration-300`}
                 >
-                  <HeadingH6 title={category.catName} />
+                  <HeadingH6 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={category.catName} />
                 </div>
               ))}
             </div>

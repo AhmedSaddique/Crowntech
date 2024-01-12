@@ -16,13 +16,11 @@ import axios from "axios";
 import ServiceTab from "../ServiceTab";
 import { UseidContext } from "../ServiceContext";
 
-
 const ServiceHero = () => {
   const [serviceInfo, setServiceInfo] = useState(null);
   const [serviceTabId, setServiceTabId] = useState(null);
   const [serviceplanId, setServiceplanId] = useState(null);
   const { id } = UseidContext();
-
 
   useEffect(() => {
     // Fetch serviceInfo data based on id from context
@@ -35,17 +33,15 @@ const ServiceHero = () => {
         );
         setServiceInfo(filteredServiceInfo);
       } catch (error) {
-        console.error('Error getting service info:', error);
+        console.error("Error getting service info:", error);
       }
     };
-  
+
     fetchServiceInfo();
   }, [id]);
-  
 
   const [showCard, setShowCard] = useState(true);
   const { Link } = Anchor;
- 
 
   const toggleCard = () => {
     setShowCard((prev) => !prev);
@@ -57,7 +53,7 @@ const ServiceHero = () => {
 
   const tabshow = [
     { id: "1", href: "#service", title: "Service" },
-    { id: "2", href: "#media", title: "Contant" },
+    { id: "2", href: "#media", title: "More Information" },
     { id: "3", href: "#plan", title: "Plan" },
     { id: "4", href: "#faq", title: "Faq's" },
   ];
@@ -185,18 +181,29 @@ const ServiceHero = () => {
         <Container className={`w-full md:w-10/12 `}>
           <div className={`p-1 md:p-3 space-y-10  `}>
             <div id="service">
-            {serviceInfo !== null ? (
-                serviceInfo.map((service , index) => (
+              {serviceInfo !== null ? (
+                serviceInfo.map((service, index) => (
                   <div className={`pt-5 w-full `} key={index}>
                     <div className="space-y-4 ">
                       <Para18
+                        initial={{ opacity: 1, x: 0 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.1 }}
                         className={"font-bold text-justify"}
                         title={"________ Service"}
                       />
                       <div className="-space-y-3">
-                        <HeadingH1 title={service.serviceName} />
+                        <HeadingH1
+                          initial={{ opacity: 1, x: 0 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.1 }}
+                          title={service.serviceName}
+                        />
                       </div>
                       <Para16
+                        initial={{ opacity: 1, x: 0 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.1 }}
                         title={service.serviceText}
                       />
                     </div>
@@ -208,16 +215,18 @@ const ServiceHero = () => {
             </div>
 
             <div id="media">
-              
-              <ServiceTab setServiceTabId={setServiceTabId}/>
+              <ServiceTab setServiceTabId={setServiceTabId} />
             </div>
 
-            <div id="plan" className='mt-5'>
-              <Plan serviceTabId={serviceTabId} setServiceplanId={setServiceplanId}/>
-          </div>
-          <div id="faq" className='mt-5'>
-              <Faq serviceplanId={serviceplanId}/>
-          </div>
+            <div id="plan" className="mt-5">
+              <Plan
+                serviceTabId={serviceTabId}
+                setServiceplanId={setServiceplanId}
+              />
+            </div>
+            <div id="faq" className="mt-5">
+              <Faq serviceplanId={serviceplanId} />
+            </div>
           </div>
         </Container>
       </div>
