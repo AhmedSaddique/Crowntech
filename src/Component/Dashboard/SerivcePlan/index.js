@@ -111,10 +111,11 @@ const ServicePlan = ({nextStep , prevStep}) => {
             {items.map((item, itemIndex) => (
               <div key={itemIndex} className="border rounded p-4 space-y-4 mt-3 mb-3">
                 <div className="flex justify-between items-center ">
-                  <span className="font-medium">Add Plan {itemIndex + 1}</span>
+                  <span className="font-medium text-primary-blue100 ">Add Plan {itemIndex + 1}</span>
                   <IoIosRemoveCircleOutline
                     size={20}
                     onClick={() => removeItem(itemIndex)}
+                    className='text-primary-blue100'
                   />
                 </div>
                 <InputForm
@@ -161,6 +162,7 @@ const ServicePlan = ({nextStep , prevStep}) => {
                         <IoIosRemoveCircleOutline
                           size={22}
                           onClick={() => removeSubItem(itemIndex, subIndex)}
+                          className='text-primary-blue100'
                         />
                       </div>
 

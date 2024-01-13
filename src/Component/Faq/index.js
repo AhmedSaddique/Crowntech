@@ -50,9 +50,14 @@ const Faq = ({serviceplanId}) => {
     setActiveTab(index);
   };
 
+    // Check if there is any item with a non-empty title
+    const hasValidTitle = filteredServicefaq.some(faq => faq.heading && faq.heading.trim() !== '');
+
   return (
     <>
-      <div className="bg-faq bg-no-repeat bg-right-top ">
+    {
+      hasValidTitle ? (
+<div className="bg-faq bg-no-repeat bg-right-top ">
         <Container>
           <div className="pt-32 ">
             <HeadingH1 initial={{ opacity: 1, x: 0 }}
@@ -115,6 +120,11 @@ const Faq = ({serviceplanId}) => {
           </div>
         </Container>
       </div>
+      ) : (
+        <></>
+      )
+    }
+      
     </>
   );
 };

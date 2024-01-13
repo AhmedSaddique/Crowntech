@@ -138,11 +138,11 @@ const ServiceTab = ({ nextStep, prevStep }) => {
       {tabsData.map((item, itemIndex) => (
         <div key={itemIndex} className="border rounded p-4 space-y-4 mt-3 mb-3">
           <div className="flex justify-between items-center">
-            <span className="font-medium text-black">
+            <span className="font-medium text-primary-blue100">
               Add Tab {itemIndex + 1}
             </span>
             <IoIosRemoveCircleOutline
-              className="text-black"
+              className="text-primary-blue100"
               size={20}
               onClick={() => handleRemoveTab(itemIndex)}
             />
@@ -176,6 +176,7 @@ const ServiceTab = ({ nextStep, prevStep }) => {
                     <IoIosRemoveCircleOutline
                       size={22}
                       onClick={() => handleRemoveSubItem(itemIndex, subIndex)}
+                      className="text-primary-blue100"
                     />
                   </div>
                   <InputForm

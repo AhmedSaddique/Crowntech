@@ -71,7 +71,7 @@ model Serviceplan {
   title           String
   text            String?
   price           String
-  chooseplan      String
+  chooseplan      String?
   description     String?
   feature         Servicefeature[]
   createdAt       DateTime @default(now())

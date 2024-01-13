@@ -247,3 +247,6 @@ html {
 .group:hover .group-hover\:my-rotate-y-180 {
   transform: rotateY(180deg);
 }
+:where(.css-dev-only-do-not-override-2q8sxy).ant-spin-nested-loading .ant-spin-container{
+  overflow-x: scroll !important;
+}
