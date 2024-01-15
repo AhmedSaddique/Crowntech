@@ -250,3 +250,13 @@ html {
 :where(.css-dev-only-do-not-override-2q8sxy).ant-spin-nested-loading .ant-spin-container{
   overflow-x: scroll !important;
 }
+
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
