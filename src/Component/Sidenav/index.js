@@ -1,10 +1,10 @@
 import React from "react";
-import ThemeToggle from "../ThemeToggle";
 import { FaHouseChimneyUser } from "react-icons/fa6";
 import { useTheme } from "next-themes";
 import DropDown from "../DropDown";
 import Logo from "../Logo";
 import { FaBarsStaggered } from "react-icons/fa6";
+import Switcher from "../Switcher";
 
 const SideNav = ({ onClose, setCollapsed, collapsed }) => {
   const { theme, setTheme } = useTheme();
@@ -26,7 +26,7 @@ const SideNav = ({ onClose, setCollapsed, collapsed }) => {
       </div>
 
       <div className="flex gap-3 items-center ">
-        <ThemeToggle />
+        <Switcher/>
         <DropDown
           onLinkClick={onClose}
           alignment="right-0 p-1 leading-none"

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Layout } from 'antd';
-import { ThemeProvider, useTheme } from 'next-themes';
+import { Layout } from 'antd'
 import Sidebar from '../Sidebar';
 import SideNav from '../Sidenav';
 
@@ -8,21 +7,19 @@ const { Header, Sider, Content } = Layout;
 
 const DashboardProvider = ({ children, onClose }) => {
   const [collapsed, setCollapsed] = useState(false);
-  const { theme, setTheme } = useTheme();
 
   return (
-    <ThemeProvider attribute="class">
       <Layout>
         <Sider trigger={null} collapsible collapsed={collapsed}>
           <div className="demo-logo-vertical" />
           <Sidebar />
         </Sider>
-        <Layout className={`${theme === 'dark' ? 'bg-primary-blue400' : ''}`}>
+        <Layout className={`bg-primary-blue400 dark:bg-primary-white`}>
           <Header style={{ padding: 0 }}>
             <SideNav onClose={onClose} setCollapsed={setCollapsed} collapsed={collapsed} />
           </Header>
           <Content
-            className={`${theme === 'dark' ? 'bg-primary-blue500' : 'bg-primary-light'} h-screen`}
+            className={`bg-primary-blue500 dark:bg-primary-light h-screen`}
             style={{
               margin: '24px 16px',
               padding: 24,
@@ -33,7 +30,6 @@ const DashboardProvider = ({ children, onClose }) => {
           </Content>
         </Layout>
       </Layout>
-    </ThemeProvider>
   );
 };
 
