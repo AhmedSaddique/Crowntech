@@ -96,7 +96,7 @@ const Header = ({ className }) => {
   return (
     <>
       <nav
-        className={`bg-primary-blue500 dark:bg-primary-light  sticky top-0  z-20 shadow-xl drop-shadow ${
+        className={`bg-primary-blue500 text-white dark:bg-primary-light dark:text-black  sticky top-0  z-20 shadow-xl drop-shadow ${
           scrollingUp ? "show" : "hide"
         }`}
       >
