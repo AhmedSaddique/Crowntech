@@ -7,7 +7,6 @@ import arrowDown from '../../../public/assets/images/arrowDown.png';
 import { TiTick } from 'react-icons/ti';
 import { Aboutcore } from '../Constants';
 import Container from '../Container';
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import Button from '../Button';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
@@ -15,7 +14,6 @@ import { motion, useViewportScroll, useTransform } from 'framer-motion';
 
 
 const Technology = () => {
-  const { theme, setTheme } = useTheme();
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1.1]);
 
@@ -32,7 +30,7 @@ const Technology = () => {
 
         <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-5">
   {Aboutcore && Aboutcore.service.map((array, index) => (
-    <motion.div  key={index} className={`shadow-lg group mb-8 rounded-lg max-h-full h-auto flex justify-center items-center relative ${theme === 'dark' ? ' bg-primary-blue100 hover:bg-primary-blue200  ' : ' bg-primary-white'}`} style={{
+    <motion.div  key={index} className={`shadow-lg group mb-8 rounded-lg max-h-full h-auto flex justify-center items-center relative  bg-primary-blue100 hover:bg-primary-blue200   dark:bg-primary-white`} style={{
       scale, // Apply the scale effect to the entire card
     }}>
       <div className="p-4 rounded-lg group-hover:opacity-25">
@@ -41,11 +39,11 @@ const Technology = () => {
         <Para16 className="pl-2" title={array.para} />
       </div>
       
-      <div className={`absolute opacity-0 w-full h-auto mt-10 mb-10 flex flex-col p-5 rounded-lg  group-hover:opacity-100 ${theme === 'dark' ? ' bg-primary-blue100 hover:bg-primary-blue200  ' : 'bg-primary-white'}`}>
+      <div className={`absolute opacity-0 w-full h-auto mt-10 mb-10 flex flex-col p-5 rounded-lg  group-hover:opacity-100 bg-primary-blue100 hover:bg-primary-blue200  dark:bg-primary-white`}>
         {array.item.map((items, index) => (
           <div className="flex flex-col gap-3" key={index}>
             <div className="flex">
-              <TiTick size={22} className={`${theme === 'dark' ? 'text-primary-white   ' : 'text-primary-black '}`} />
+              <TiTick size={22} className={``} />
               <Para16 title={items.role} />
             </div>
           </div>

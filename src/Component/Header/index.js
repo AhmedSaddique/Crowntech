@@ -15,16 +15,15 @@ import TabsComponent from "../TabsComponent";
 import Container from "../Container";
 import Logo from "../Logo";
 import Navlink from "../NavLink";
-import ThemeToggle from "../ThemeToggle";
 import Button from "../Button";
 import { motion } from "framer-motion";
 import HeaderServiceTab from "../HeaderServiceTab";
 import ServiceContext from "../ServiceContext";
+import Switcher from "../Switcher";
 
 const Header = ({ className }) => {
   const [open, setOpen] = useState(false);
   const [placement, setPlacement] = useState("left");
-  const { theme, setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrollingUp, setScrollingUp] = useState(true);
 
@@ -97,9 +96,7 @@ const Header = ({ className }) => {
   return (
     <>
       <nav
-        className={`${
-          theme === "dark" ? " bg-primary-blue500 " : " bg-primary-light "
-        } sticky top-0  z-20 shadow-xl drop-shadow ${
+        className={`bg-primary-blue500 dark:bg-primary-light  sticky top-0  z-20 shadow-xl drop-shadow ${
           scrollingUp ? "show" : "hide"
         }`}
       >
@@ -135,9 +132,7 @@ const Header = ({ className }) => {
         </Container>
 
         <div
-          className={`${
-            theme === "dark" ? "bg-primary-white " : "border-b-primary-black"
-          }  border-b-2 w-[95%] mx-auto`}
+          className={`  dark:border-b-primary-black  bg-primary-white border-b-2 w-[95%] mx-auto`}
         />
         <Container className="flex justify-between py-4 pt-2 pb-2 ">
           <div className="relative z-10">
@@ -153,7 +148,7 @@ const Header = ({ className }) => {
           </motion.div>
           <div className="flex gap-4">
             <div className="flex items-center gap-2">
-              <ThemeToggle />
+              <Switcher/>
               <Button
                 onClick={() => toggleModal(0, true)}
                 className={"border-none"}
@@ -221,11 +216,7 @@ const Header = ({ className }) => {
                 }}
               >
                 <div
-                  className={`rounded-lg shadow-xl  p-3 ${
-                    theme === "dark"
-                      ? "  backdrop-blur-2xl"
-                      : " backdrop-blur-2xl "
-                  }`}
+                  className={`rounded-lg shadow-xl  p-3  dark:backdrop-blur-2xl    backdrop-blur-2xl`}
                 >
                   <div
                     className={`flex  justify-center border-2 hover:scale-105  shadow-md text-primary-white hover:shadow-lg duration-100 transition rounded-md p-2 w-10`}
@@ -257,9 +248,8 @@ const Header = ({ className }) => {
               </button>
               {mobileMenuOpen && (
                 <div
-                  className={`absolute -z-10 inset-x-0  h-screen   origin-top rounded-b-2xl px-6 pb-6 pt-10 ${
-                    theme === "dark" ? "bg-primary-blue500" : "bg-primary-white"
-                  }`}
+                  className={`absolute -z-10 inset-x-0  h-screen origin-top rounded-b-2xl px-6 pb-6 pt-10 bg-primary-blue500 dark:bg-primary-white
+                  `}
                 >
                   <div className="space-y-4  flex-col flex z-50">
                     <Navlink onClose={() => setMobileMenuOpen(false)} />

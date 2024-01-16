@@ -29,7 +29,7 @@ export default function Home() {
       <Preloader />
     ) : (
       <>
-       <Header/>
+    <Header/>
     <Hero/>
     <Brand/>
     <Technology/>
