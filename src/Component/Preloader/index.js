@@ -35,7 +35,7 @@ const transition = {
   ease: "easeInOut",
 };
 const Preloader = () => (
-  <div className="preloader bg-primary-blue500 dark:bg-primary-white animate-pulse " style={{ position: "relative" }}>
+  <div className="preloader bg-primary-blue500 dark:bg-primary-white  " style={{ position: "relative" }}>
     <motion.div
       variants={firstImageVariants}
       initial="initial"
