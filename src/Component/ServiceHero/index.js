@@ -1,8 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { HeadingH1, HeadingH3, HeadingH4, HeadingH6 } from "../Heading";
-import { Para14, Para16, Para18 } from "../ParaGraph";
-import { useTheme } from "next-themes";
+import { HeadingH1, HeadingH6 } from "../Heading";
+import {  Para16, Para18 } from "../ParaGraph";
 import { Anchor, Tabs } from "antd";
 import { SiGnuprivacyguard } from "react-icons/si";
 import NextLink from "next/link"; // Rename it to NextLink
@@ -49,7 +48,6 @@ const ServiceHero = () => {
   const closeCard = () => {
     setShowCard(false);
   };
-  const { theme, setTheme } = useTheme();
 
   const tabshow = [
     { id: "1", href: "#service", title: "Service" },
@@ -100,17 +98,13 @@ const ServiceHero = () => {
           {showCard && (
             <div className="block md:hidden shadow-lg rounded-md backdrop-blur-3xl w-full pb-20  p-3 h-full overflow-hidden overflow-y-scroll max-h-[84vh] sticky top-40 no-scrollbar">
               <HeadingH6
-                className={`${
-                  theme === "dark"
-                    ? "text-primary-white"
-                    : " text-primary-black"
-                } p-2`}
+                className={` p-2`}
                 title={"Table of Content"}
               />
               <Anchor
                 affix={false}
                 onClick={closeCard}
-                className={theme === "dark" ? "light-theme" : " dark-theme"}
+                className={'light-theme'}
               >
                 {tabshow.map((anch, index) => (
                   <Link
@@ -125,11 +119,7 @@ const ServiceHero = () => {
                 {tablink.map((anch, index) => (
                   <NextLink
                     key={anch.id || index + 1}
-                    className={` ${
-                      theme === "dark"
-                        ? " hover:text-primary-blue100"
-                        : "hover:text-primary-blue100"
-                    } flex gap-2`}
+                    className={` hover:text-primary-blue100 flex gap-2`}
                     href={`${anch.href}`}
                   >
                     {anch.icon}
@@ -141,14 +131,12 @@ const ServiceHero = () => {
           )}
           <div className="hidden md:block shadow-lg rounded-md backdrop-blur-3xl w-full pb-20 md:w-full p-3 h-full overflow-hidden overflow-y-scroll max-h-[84vh] sticky top-40 no-scrollbar">
             <HeadingH6
-              className={`${
-                theme === "dark" ? "text-primary-white" : " text-primary-black"
-              } p-2`}
+              className={` p-2`}
               title={"Table of Content"}
             />
             <Anchor
               affix={false}
-              className={theme === "dark" ? "light-theme" : " dark-theme"}
+              className={"light-theme"}
             >
               {tabshow.map((anch, index) => (
                 <Link
@@ -163,11 +151,7 @@ const ServiceHero = () => {
               {tablink.map((anch, index) => (
                 <NextLink
                   key={anch.id || index + 1}
-                  className={` ${
-                    theme === "dark"
-                      ? " hover:text-primary-blue100"
-                      : " hover:text-primary-blue100"
-                  } flex gap-2`}
+                  className={` hover:text-primary-blue100 flex gap-2`}
                   href={`${anch.href}`}
                 >
                   {anch.icon}

@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
-import { useTheme } from 'next-themes';
 import { HeadingH5 } from '../Heading';
 
 
@@ -20,7 +19,6 @@ const DropDown = ({ array, text, icon, onLinkClick,BtnClass, textSize = 'font-se
     setIsOpen(true);
   };
 
-  const { theme } = useTheme();
 
 
   return (
@@ -34,8 +32,7 @@ const DropDown = ({ array, text, icon, onLinkClick,BtnClass, textSize = 'font-se
       </button>
       {isOpen && (
         <div 
-          className={`fixed ${alignment} z-20 rounded-md shadow  ${theme === 'dark' ? 'bg-primary-blue400' : ' bg-primary-white'
-            }`} >
+          className={`fixed ${alignment} z-20 rounded-md shadow bg-primary-blue400 dark:bg-primary-white`} >
           {
             array.map((array, index) => (
           <div key={index}  onMouseEnter={openDropdown}

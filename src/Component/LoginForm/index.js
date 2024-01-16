@@ -54,7 +54,7 @@ const LoginForm = () => {
         <b className='mt-10'>Or SignUp With</b>
         <div className='flex gap-5 justify-center mt-3'>
           <Button  className='border p-2 rounded-md hover:bg-blue-100' text={<FcGoogle size={25}/>}/>
-          <Button  className='border p-2 rounded-md hover:bg-blue-100 text-black' text={<AiFillGithub size={25}/>}/>
+          <Button  className='border p-2 rounded-md hover:bg-blue-100 hover:text-black dark:text-black dark:hover:bg-black dark:hover:text-white text-white' text={<AiFillGithub size={25}/>}/>
         </div>
         </div>
         </form>

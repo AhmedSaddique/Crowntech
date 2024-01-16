@@ -1,4 +1,3 @@
-"use client"
 import React, { useContext } from 'react'
 import choosemain from '../../../public/assets/images/choosemain.png'
 import choose1 from '../../../public/assets/images/choose1.png'

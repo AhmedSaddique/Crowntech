@@ -3,7 +3,6 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Testimonialdata } from '../Constants';
-import { useTheme } from 'next-themes';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -17,7 +16,7 @@ const Testimonial = () => {
   
 
   const [slidesPerView, setSlidesPerView] = useState(3); // Default value for larger screens
-  const { theme } = useTheme();
+
 
   useEffect(() => {
     const handleResize = () => {

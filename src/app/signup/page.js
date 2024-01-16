@@ -10,6 +10,7 @@ const SignUp = () => {
 
   return (
     <LayoutProvider>
+      
       <Header />
       <SignUpForm />
       <Footer />

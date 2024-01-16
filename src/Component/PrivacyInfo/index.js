@@ -1,10 +1,8 @@
-"use client";
+
 import React from "react";
 import { Anchor, Tabs } from "antd";
-import { useTheme } from "next-themes";
 import { HeadingH3, HeadingH6 } from "../Heading";
 import { Para16 } from "../ParaGraph";
-
 import Container from "../Container";
 import { policydata } from "../Constants";
 
@@ -12,8 +10,6 @@ const { TabPane } = Tabs;
 
 const { Link } = Anchor;
 const Privacyinfo = () => {
-  const { theme, setTheme } = useTheme();
-
   return (
     <>
       <div className={`flex flex-wrap md:flex-nowrap gap-3 p-1 pt-5 md:pt-40 `}>
@@ -29,7 +25,7 @@ const Privacyinfo = () => {
             <>
               <Anchor key={index}
                 affix={false}
-                className={theme === "dark" ? "light-theme" : " dark-theme"}
+                className="light-theme "
               >
                 <Link href={array.href} title={array.title} />
               </Anchor>

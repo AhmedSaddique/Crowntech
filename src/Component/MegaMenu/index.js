@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ImCross } from "react-icons/im";
-import { useTheme } from "next-themes";
 import { HeadingH4, HeadingH5, HeadingH6 } from "../Heading";
 import MegaData from "../MegaData";
 import axios from "axios";
@@ -52,7 +51,6 @@ const MegaMenu = ({
     setIsOpen(true);
   };
 
-  const { theme } = useTheme();
 
   const handleTabClick = (categoryId) => {
     setActiveCategoryId(categoryId);
@@ -71,9 +69,7 @@ const MegaMenu = ({
       </button>
       {isOpen && (
         <div
-          className={`absolute top-0 lg:top-auto lg:mt-5 xl:mt-7 ${alignment}  z-20   shadow-lg ${
-            theme === "dark" ? "bg-primary-blue500" : "bg-primary-white"
-          }`}
+          className={`absolute top-0 lg:top-auto lg:mt-5 xl:mt-7 ${alignment}  z-20   shadow-lg bg-primary-blue500 dark:bg-primary-white`}
           ref={dropdownRef}
         >
           <div

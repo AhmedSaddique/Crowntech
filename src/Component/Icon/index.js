@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react'
-import { AiOutlineFacebook,AiOutlineInstagram ,AiFillTwitterSquare,AiFillLinkedin} from "react-icons/ai";
-import { BiLogoFacebook, BiLogoFacebookCircle } from 'react-icons/bi';
+import { AiOutlineInstagram ,AiFillLinkedin} from "react-icons/ai";
+import { BiLogoFacebook } from 'react-icons/bi';
 import { FaXTwitter } from 'react-icons/fa6';
 
 const Iconitem = ({className}) => {

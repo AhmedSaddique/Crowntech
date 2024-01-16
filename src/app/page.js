@@ -10,25 +10,12 @@ import Testimonial from "@/Component/Testimonial";
 import Footer from "@/Component/Footer";
 import { NavbarContext } from "@/Component/ContextProvider";
 import { useContext, useEffect, useState } from "react";
-import Preloader from "@/Component/Preloader";
 
 export default function Home() {
   const { Header } = useContext(NavbarContext);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
   return (
    
  <LayoutProvider>
-   {loading ? (
-      <Preloader />
-    ) : (
-      <>
     <Header/>
     <Hero/>
     <Brand/>
@@ -44,9 +31,6 @@ export default function Home() {
         />
   <Testimonial/>
   <Footer/>
-      </>
- 
-  )}
   </LayoutProvider>
 
   )

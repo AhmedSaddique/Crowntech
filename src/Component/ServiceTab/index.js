@@ -3,11 +3,9 @@ import { Tabs } from 'antd';
 import { HeadingH3, HeadingH4 } from '../Heading';
 import { Para14, Para16 } from '../ParaGraph';
 import { AiOutlineHome } from 'react-icons/ai';
-import { useTheme } from 'next-themes';
 import axios from 'axios';
 import { UseidContext } from '../ServiceContext';
 const ServiceTab = ({ setServiceTabId }) => {
-  const { theme } = useTheme();
   const { TabPane } = Tabs;
   const [allServicetabs, setAllServicetabs] = useState([]);
   const [filteredServicetabs, setFilteredServicetabs] = useState([]);
@@ -50,13 +48,13 @@ const ServiceTab = ({ setServiceTabId }) => {
           <Tabs defaultActiveKey="1" tabBarStyle={{ border: 'none' }}>
             {filteredServicetabs.map((item, index) => (
               <TabPane 
-                tab={<span className={`flex gap-1 ${theme === 'dark' ? 'text-primary-white' : 'text-primary-black'}`}>
+                tab={<span className={`flex gap-1 `}>
                   <AiOutlineHome size={20} className='mt-1'/>
                   {item.title}
                 </span>} 
                 key={index + 1}
               >
-                <div className={`space-y-3 ${theme === 'dark' ? 'text-primary-white' : 'text-primary-black'}`}>
+                <div className={`space-y-3 `}>
                   <HeadingH4 title={item.heading} />
                   <Para16 title={item.description}/>
                   <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 pt-5'>

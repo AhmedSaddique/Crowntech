@@ -2,17 +2,14 @@
 import { useState, useEffect } from 'react';
 import { HeadingH1, HeadingH2, HeadingH3, HeadingH4, HeadingH6 } from '../Heading';
 import { Para14, Para16, Para18 } from '../ParaGraph';
-import { useTheme } from 'next-themes';
 import { Anchor ,Tabs  } from 'antd';
 import { SiGnuprivacyguard } from 'react-icons/si';
 import NextLink from 'next/link'; // Rename it to NextLink
-import { AiOutlineHome } from 'react-icons/ai';
 import Container from '../Container';
 import { MdContactSupport } from 'react-icons/md';
 import { BiSolidContact } from 'react-icons/bi';
 import { RiCloseLine, RiMenu4Line } from 'react-icons/ri';
-import Plan from '../Plan';
-import Faq from '../Faq';
+
 import { tabdata } from '../Constants';
 import Image from 'next/image';
 const { TabPane } = Tabs;
@@ -46,7 +43,6 @@ const ProductHero = () => {
   const closeCard = () => {
     setShowCard(false);
   };
-  const { theme, setTheme } = useTheme();
 
   const tabshow = [
     {id:"1", href:'#product', title: 'Product'},
@@ -77,10 +73,8 @@ const ProductHero = () => {
       {showCard && (
         <div className='block md:hidden shadow-lg rounded-md backdrop-blur-3xl w-full pb-20  p-3 h-full overflow-hidden overflow-y-scroll max-h-[84vh] sticky top-40 no-scrollbar'>
           
-          <HeadingH6  className={`${
-              theme === "dark" ? "text-primary-white" : " text-primary-black"
-            } p-2`} title={"Table of Content"}/>
-          <Anchor affix={false} onClick={closeCard} className={theme === 'dark' ? 'light-theme' : ' dark-theme'}>
+          <HeadingH6  className={` p-2`} title={"Table of Content"}/>
+          <Anchor affix={false} onClick={closeCard} className={'light-theme'}>
             {
               tabshow.map((array, index)=>(
                 <Link key={index} href={array.href} title={array.title} />
@@ -91,9 +85,7 @@ const ProductHero = () => {
           <div className={` text-16 font-medium p-3 space-y-3`}>
           {
               tablink.map((array, index)=>(
-                <NextLink key={index} className={` ${
-                  theme === 'dark' ? ' hover:text-primary-blue100' : ' hover:text-primary-blue100'
-                } flex gap-2`} href={`${array.href}`}>
+                <NextLink key={index} className={` hover:text-primary-blue100 flex gap-2`} href={`${array.href}`}>
               {array.icon}
               {array.title}
             </NextLink>
@@ -107,7 +99,7 @@ const ProductHero = () => {
 )}
 <div className='hidden md:block shadow-lg rounded-md backdrop-blur-3xl w-full pb-20 md:w-full p-3 h-full overflow-hidden overflow-y-scroll max-h-[84vh] sticky top-40 no-scrollbar'>
           <HeadingH6  className={` p-2`} title={"Table of Content"}/>
-          <Anchor affix={false}  className={theme === 'dark' ? 'light-theme' : ' dark-theme'}>
+          <Anchor affix={false}  className={'light-theme'}>
           {
               tabshow.map((array, index)=>(
                 <Link key={index} href={array.href} title={array.title} />
@@ -118,9 +110,7 @@ const ProductHero = () => {
           <div className={` text-16 font-medium p-3 space-y-3`}>
           {
               tablink.map((array, index)=>(
-                <NextLink key={index} className={` ${
-                  theme === 'dark' ? ' hover:text-primary-blue100' : ' hover:text-primary-blue100'
-                } flex gap-2`} href={`${array.href}`}>
+                <NextLink key={index} className={` hover:text-primary-blue100 flex gap-2`} href={`${array.href}`}>
               {array.icon}
               {array.title}
             </NextLink>
@@ -156,9 +146,7 @@ const ProductHero = () => {
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 '>
             {
             tabdata.map((array, index)=>(
-                <NextLink href='/product' key={index} className={`${
-                    theme === 'dark' ? ' hover:bg-primary-blue100' : 'hover:bg-primary-light  '
-                  } space-y-2 shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}>
+                <NextLink href='/product' key={index} className={` hover:bg-primary-blue100 dark:hover:bg-primary-blue100 dark:hover:text-white space-y-2 shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}>
                 <Image className='w-[50px] mx-auto' src={array.image} alt={array.image} />
                 <HeadingH6  title={array.title}/>
                 <Para14 title={array.text}/>
@@ -175,9 +163,7 @@ const ProductHero = () => {
             <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 '>
             {
             tabdata.map((array, index)=>(
-                <NextLink href='/product' key={index} className={`${
-                    theme === 'dark' ? ' hover:bg-primary-blue100' : 'hover:bg-primary-light  '
-                  } space-y-2 shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}>
+                <NextLink href='/product' key={index} className={` hover:bg-primary-blue100 dark:hover:bg-primary-blue100 dark:hover:text-white space-y-2 shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}>
                 <Image className='w-[50px] mx-auto' src={array.image} alt={array.image} />
                 <HeadingH6  title={array.title}/>
                 <Para14 title={array.text}/>

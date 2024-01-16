@@ -1,20 +1,16 @@
-"use client"
+
 import React from 'react'
 import Logo from '../Logo'
 import { FooterAbout, FooterResources, WeOffer } from '../Constants'
 import FooterDiv from '../FooterDiv'
-import { useTheme } from 'next-themes'
 import Container from '../Container'
 import Iconitem from '../Icon'
 
 
 const Footer = () => {
-  const {theme ,setTheme} = useTheme();
   return (
     <>
-      <footer className={`pt-10 ${
-        theme=== 'dark' ? ' bg-primary-blue500 ' : ' bg-primary-light'
-      }`}>
+      <footer className={`pt-10  bg-primary-blue500  dark:bg-primary-light`}>
         <div className='w-full border-t shadow-lg  pt-10  relative bottom-0 space-x-5'>
           <Container>
             <div className='grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5  gap-3 space-y-5'>

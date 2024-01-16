@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { TiTick } from "react-icons/ti";
 import Button from "../Button";
-import { useTheme } from "next-themes";
 import { HeadingH3, HeadingH4 } from "../Heading";
 import Container from "../Container";
 import { Para12, Para14 } from "../ParaGraph";
@@ -10,8 +9,6 @@ import axios from "axios";
 
 const PlanCard = ({ serviceTabId,setServiceplanId }) => {
 
-  // console.log(" planCard id : ",serviceTabId)
-  const { theme, setTheme } = useTheme();
   const [filteredServiceplan, setFilteredServiceplan] = useState([]);
   const [serviceplan, setserviceplan] = useState([]);
 
@@ -43,7 +40,7 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
   }, [serviceplan, serviceTabId]);
   
     // Check if there is any item with a non-empty title
-    const hasValidTitle = filteredServiceplan.some(plan => plan.title && plan.title.trim() !== '');
+    const hasValidTitle = filteredServiceplan.some(plan => plan.price && plan.price.trim() !== '');
 
 
   return (
@@ -57,11 +54,7 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
         {filteredServiceplan &&
           filteredServiceplan.map((items, index) => (
             <div
-              className={`  space-y-2 shadow  mb-5 rounded-lg p-4 hover:scale-105 transition duration-300 ${
-                theme === "dark"
-                  ? " bg-primary-blue100 "
-                  : "  bg-primary-white"
-              } `}
+              className={`  space-y-2 shadow  mb-5 rounded-lg p-4 hover:scale-105 transition duration-300 bg-primary-blue100  dark:bg-primary-white `}
               key={index}
             >
               <div className="">
@@ -81,11 +74,7 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
               </div>
               <Button
                 text={"Choose Plan"}
-                className={`w-full  justify-center flex ${
-                  theme === "dark"
-                    ? "bg-primary-white text-black"
-                    : " bg-primary-blue200 hover:bg-primary-blue300 text-white"
-                }  border-none `}
+                className={`w-full  justify-center flex bg-primary-white text-black  dark:bg-primary-blue200 dark:hover:bg-primary-blue300 dark:text-white border-none `}
               />
               <HeadingH4 initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
