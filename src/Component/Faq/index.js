@@ -37,7 +37,7 @@ const Faq = ({ serviceplanId }) => {
       (faq) => faq.plan.tabId === serviceplanId
     );
     setFilteredServicefaq(filteredData);
-    // console.log("Filtered Service Faq:", filteredData);
+     console.log("Filtered Service Faq:", filteredData);
   }, [servicefaq, serviceplanId]);
 
   const toggleAccordion = (index) => {
@@ -120,8 +120,8 @@ const Faq = ({ serviceplanId }) => {
                 ))}
               </div>
               <div className="w-full sm:w-7/12 flex justify-center items-center">
-                {servicefaq[activeTab] && (
-                  <FaqImg image={servicefaq[activeTab].Faqimage} />
+                {filteredServicefaq[activeTab] && (
+                  <FaqImg image={filteredServicefaq[activeTab].Faqimage} />
                 )}
               </div>
             </div>

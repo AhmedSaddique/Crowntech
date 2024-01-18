@@ -48,19 +48,19 @@ const ServiceTab = ({ setServiceTabId }) => {
           <Tabs defaultActiveKey="1" tabBarStyle={{ border: 'none' }}>
             {filteredServicetabs.map((item, index) => (
               <TabPane 
-                tab={<span className={`flex gap-1 `}>
+                tab={<span className={`flex gap-1 text-white dark:text-black`}>
                   <AiOutlineHome size={20} className='mt-1'/>
                   {item.title}
                 </span>} 
                 key={index + 1}
               >
                 <div className={`space-y-3 `}>
-                  <HeadingH4 title={item.heading} />
-                  <Para16 title={item.description}/>
+                  <HeadingH4 className={"text-white dark:text-black"} title={item.heading} />
+                  <Para16 className={"text-white dark:text-black"} title={item.description}/>
                   <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 pt-5'>
                     {item.subdata.map((subItem, subIndex) => (
                       <div className='border-t-2 p-2 shadow-md backdrop-blur-3xl' key={subIndex + 1}>
-                        <Para14 title={subItem.description}/>
+                        <Para14 className={"text-white dark:text-black"} title={subItem.description}/>
                       </div>
                     ))}
                   </div>

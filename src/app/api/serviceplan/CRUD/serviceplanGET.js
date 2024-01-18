@@ -38,7 +38,7 @@ export const serviceplanGET = async (req) => {
 
 export const serviceplanGetbyID = async (req, {params}) =>{
     try {
-        const { id } = req.params; // Assuming 'id' is a parameter in your route
+        const { id } = params;// Assuming 'id' is a parameter in your route
         const serviceplan = await prisma.serviceplan.findUnique({
             where: { id: parseInt(id) },
             include: {

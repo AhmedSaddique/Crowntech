@@ -39,6 +39,7 @@ const ServiceFaq = ({ prevStep }) => {
     const formData = new FormData();
     faqs.forEach((faq, index) => {
       // Use the index to group each FAQ's properties
+      
       if (faq.file) {
         formData.append(`faqs[${index}][Faqimage]`, faq.file, faq.file.name);
       }
