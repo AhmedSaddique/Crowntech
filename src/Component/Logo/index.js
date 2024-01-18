@@ -5,7 +5,7 @@ import { HeadingH1, HeadingH2 } from '../Heading';
 const Logo = ({ className }) => {
   return (
     <Link  href="/">
-      <HeadingH2 title={'LOGO'}/>
+      <HeadingH2 className={`text-white dark:text-black`} title={'LOGO'}/>
       {/* <Image className='w-[100px] sm:w-[150px]' src={logo} /> */}
     </Link>
   );

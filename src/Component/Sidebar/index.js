@@ -2,11 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Menu } from 'antd';
 import { MailOutlined, AppstoreOutlined, SettingOutlined } from '@ant-design/icons';
-import { useTheme } from 'next-themes';
 import Link from 'next/link';
 
 const Sidebar = () => {
-  const { theme } = useTheme();
  // State to manage whether the sidebar is collapsed
  const [collapsed, setCollapsed] = useState(true);
 
@@ -29,13 +27,13 @@ const Sidebar = () => {
  }, []); // Empty dependency array ensures this runs once on mount
 
   return (
-    <div className={`h-full z-20 shadow flex flex-col transition-width duration-300 ${theme === 'dark' ? 'bg-primary-blue500' : 'bg-primary-white'}`}>
+    <div className={`h-full z-20 shadow flex flex-col transition-width duration-300 'bg-primary-blue500 dark:bg-primary-white`}>
       <Menu
         defaultSelectedKeys={['1']}
         defaultOpenKeys={['sub1']}
         mode="inline"
         inlineCollapsed={collapsed}
-        className={`flex-grow shadow backdrop-blur-3xl md:backdrop-blur-none px-2 pt-5 z-20 ${theme === 'dark' ? 'bg-primary-blue500 text-white' : 'bg-primary-white'}`}
+        className={`flex-grow shadow backdrop-blur-3xl md:backdrop-blur-none px-2 pt-5 z-20 bg-primary-blue500 text-white  dark:bg-primary-white dark:text-black`}
       >
         <Menu.Item key="1" icon={<MailOutlined />}>
           <Link href="/dashboard">Dashboard</Link>

@@ -59,7 +59,9 @@ const MegaData = ({ categoryId }) => {
   return (
     <>
       <div className="flex items-center p-3">
-        <HeadingH4 title={"Core Services"} />
+        <HeadingH4 initial={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.1 }} title={"Core Services"} />
       </div>
 
       {filteredServiceInfo.map((service, index) => (
