@@ -39,24 +39,24 @@ export const HeadingH3 = ({icon, title ,className, initial={ opacity: 0,  y:40 }
     </motion.div>
   )
 };
-export const HeadingH4 = ({icon, title ,className, initial={ opacity: 0,  y:40 },animate={ opacity: 1, y: 0 }, transition={ duration: 0.8 }   }) => {
+export const HeadingH4 = ({icon, title ,className,spans, initial={ opacity: 0,  y:40 },animate={ opacity: 1, y: 0 }, transition={ duration: 0.8 }   }) => {
   return (
     <motion.div initial={initial}
     animate={animate}
     transition={transition}>
       <p className={`xl:text-xl-h4 lg:text-lg-h4 text-md-h4 font-semibold  gap-3 ${className}`}>
-        {icon}{title}
+        {icon}{title}{spans}
       </p>
     </motion.div>
   )
 };
-export const HeadingH5 = ({icon, title ,className, initial={ opacity: 0,  y:40 },animate={ opacity: 1, y: 0 }, transition={ duration: 0.8 }}) => {
+export const HeadingH5 = ({icon, title ,className,spans, initial={ opacity: 0,  y:40 },animate={ opacity: 1, y: 0 }, transition={ duration: 0.8 }}) => {
   return (
    <motion.div initial={initial}
     animate={animate}
     transition={transition}>
-      <p className={`xl:text-xl-h5 lg:text-lg-h5 text-md-h5 font-semibold  gap-3 ${className}`}>
-        {icon}{title}
+      <p className={`xl:text-xl-h5 lg:text-lg-h5 text-md-h5 font-semibold gap-3 ${className}`}>
+        {icon}{title}{spans}
       </p>
     </motion.div>
   )

@@ -66,7 +66,8 @@ const PlanCard = ({ serviceTabId,setServiceplanId }) => {
               <div>
                 <HeadingH4 initial={{ opacity: 1, x: 0 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.1 }} title={items.price} />
+            transition={{ duration: 0.1 }} title={items.price} spans={"$"} />
+            
                 <p className="font-normal">{items.description}</p>
               </div>
               <div>
