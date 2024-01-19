@@ -28,15 +28,7 @@ const DashService = () => {
   const onClose2 = () => {
     setVisibleDrawer2(false);
   };
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-    },
-    { key: "2", name: "Joe Black", age: 42, address: "London No. 1 Lake Park" },
-  ];
+
   return (
     <Container className={""}>
       <div className="mt-10 justify-end flex flex-wrap md:flex-nowrap  gap-3">
@@ -78,7 +70,7 @@ const DashService = () => {
         </ServiceContext>
       </Drawer>
 
-      <ServiceTable data={data} />
+      <ServiceTable  />
     </Container>
   );
 };

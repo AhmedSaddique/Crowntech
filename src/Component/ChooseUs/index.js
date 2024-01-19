@@ -6,6 +6,7 @@ import { Para14, Para16 } from '../ParaGraph'
 import { TiTick } from 'react-icons/ti'
 import Button from '../Button'
 import Container from '../Container'
+import Link from 'next/link'
 
 const ChooseUs = ({className, flex = "md:flex",maintitle,image1,mainimage,image2,badge,choosetitle,choosepara,Choosedata }) => {
 
@@ -23,7 +24,7 @@ const ChooseUs = ({className, flex = "md:flex",maintitle,image1,mainimage,image2
             <Image className='absolute bottom-0 md:bottom-10 lg:bottom-0 hidden md:flex  animate-bounce ' src={image2} alt='image2' />
           </div>
           <div className={`space-y-3 w-full md:w-6/12 `}>
-            <Badges  className={` shadow-md text-center  border-none `} title={badge} />
+            <Badges   className={` shadow-md text-center bg-primary-blue100 dark:bg-white  border-none `} title={badge} />
             <HeadingH3  title={choosetitle} />
             <Para16 title={choosepara} />
 
@@ -38,11 +39,11 @@ const ChooseUs = ({className, flex = "md:flex",maintitle,image1,mainimage,image2
               }
             </div>
             <div className="flex flex-wrap gap-4">
-              <Button
-                text="Contact Us"
-                className='border-none px-4 py-2 bg-gradient-to-r from-primary-btn1 hover:from-primary-btn3 via-primary-btn2 to-primary-btn3 hover:to-primary-btn1 text-primary-white transition duration-400 shadow-md'
-              />
-              <Button text="Support Center" className="bg-primary-white text-black" />
+              <Link href="/contact"
+              
+                className='border-none rounded-md px-4 py-2 bg-gradient-to-r from-primary-btn1 hover:from-primary-btn3 via-primary-btn2 to-primary-btn3 hover:to-primary-btn1 text-primary-white transition duration-400 shadow-md'
+              >  Contact Us
+              </Link>
             </div>
 
           </div>

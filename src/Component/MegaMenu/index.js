@@ -68,7 +68,8 @@ const MegaMenu = ({
         {icon && icon}
       </button>
       {isOpen && (
-        <div
+        <div   onMouseEnter={openDropdown}
+        onMouseLeave={closeDropdown}
           className={`absolute top-0 lg:top-auto lg:mt-5 xl:mt-7 ${alignment}  z-20   shadow-lg bg-primary-blue500 dark:bg-primary-white`}
           ref={dropdownRef}
         >
@@ -79,7 +80,7 @@ const MegaMenu = ({
             <ImCross />
           </div>
           <div className="flex gap-1 " style={{width:"100%" , maxHeight:"calc(100vh - 65px)" }}>
-            <div className={` ${className}  p-1 overflow-y-scroll lg:max-h-[330px] xl:max-h-[420px] xxl:xl:max-h-max pt-5 w-full md:w-3/12  `}>
+            <div  className={` ${className}  p-1 overflow-y-scroll lg:max-h-[330px] xl:max-h-[420px] xxl:xl:max-h-max pt-5 w-full md:w-3/12  `}>
               {servicecat.map((category, index) => (
                 <div
                   key={index}
@@ -97,13 +98,13 @@ const MegaMenu = ({
               ))}
             </div>
             <div
-              className={`${className} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-9/12 pb-[30vh]`}
+              className={`${className} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-9/12 pb-[30vh] p-2`}
             >
               {activeCategoryId && (
                 <ServiceContext>
                   <MegaData
                     categoryId={activeCategoryId}
-                    onLinkClick={onLinkClick}
+                    onLinkClick={handleBothClicks}
                   />
                 </ServiceContext>
               )}

@@ -3,10 +3,19 @@ import { Table, Input, Space } from 'antd';
 import Button from '@/Component/Button';
 import { FaFilter } from 'react-icons/fa6';
 
-const ServiceTable = ({ data }) => {
+const ServiceTable = () => {
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const inputRef = useRef(null);
+    const data = [
+      {
+        key: "1",
+        name: "Ahmad",
+        age: 32,
+        address: "New York No. 1 Lake Park",
+      },
+      { key: "2", name: "Joe Black", age: 42, address: "London No. 1 Lake Park" },
+    ];
 
   const getColumnSearchProps = (dataIndex, title) => ({
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (

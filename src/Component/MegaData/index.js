@@ -9,7 +9,7 @@ import { HeadingH4, HeadingH6 } from "../Heading";
 import { Para12 } from "../ParaGraph";
 import { motion } from "framer-motion";
 
-const MegaData = ({ categoryId }) => {
+const MegaData = ({ categoryId,onLinkClick }) => {
   const [serviceinfo, setserviceinfo] = useState([]);
   const [filteredServiceInfo, setFilteredServiceInfo] = useState([]);
   const { id, setid } = UseidContext();
@@ -51,6 +51,7 @@ const MegaData = ({ categoryId }) => {
   const handleServiceClick = useCallback(
     (serviceId) => {
       setid(serviceId);
+      onLinkClick();
       router.push(`/service/${serviceId}`);
     },
     [setid, router]
@@ -64,7 +65,7 @@ const MegaData = ({ categoryId }) => {
               transition={{ duration: 0.1 }} title={"Core Services"} />
       </div>
 
-      {filteredServiceInfo.map((service, index) => (
+       {filteredServiceInfo.map((service, index) => (
         <motion.div
           key={index}
           onClick={() => handleServiceClick(service.id)}
@@ -90,6 +91,7 @@ const MegaData = ({ categoryId }) => {
           </div>
         </motion.div>
       ))}
+ 
     </>
   );
 };

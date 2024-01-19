@@ -18,8 +18,7 @@ const AddCategory = () => {
       setLoading(true);
       try {
           const response = await axios.post('/api/servicecategory' ,categoryData)
-          console.log(response.data);
-          router.push('/dashboard/service')
+          router.push('/dashboard')
           
       } catch (error) {
         console.error("Error submitting the form:", error);
