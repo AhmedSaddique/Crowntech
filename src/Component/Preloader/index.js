@@ -29,13 +29,18 @@ const fourthImageVariants = {
     animate: { opacity: 1 },
     exit: { opacity: 0, transition: { duration: 1.2 } },
 };
+const fifthImageVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0, transition: { duration: 1.1 } },
+};
 
 const transition = {
   duration: 1,
   ease: "easeInOut",
 };
 const Preloader = () => (
-  <div className="preloader   " style={{ position: "relative" }}>
+  <div className="preloader bg-primary-blue500 dark:bg-white  " style={{ position: "relative" }}>
     <motion.div
       variants={firstImageVariants}
       initial="initial"
@@ -58,7 +63,7 @@ const Preloader = () => (
       animate="animate"
       exit="exit"
       transition={{ duration: 1, delay: .6 }}
-      style={{ position: "absolute", zIndex: 1 }}
+      style={{ position: "absolute", zIndex: 2 }}
     >
       <Image
         src={circle}
@@ -74,7 +79,7 @@ const Preloader = () => (
       animate="animate"
       exit="exit"
       transition={{ ...transition, delay: 1 }}
-      style={{ position: "absolute", zIndex: 2 }}
+      style={{ position: "absolute", zIndex: 3 }}
     >
       <Image
         src={travokey}
@@ -91,7 +96,7 @@ const Preloader = () => (
       animate="animate"
       exit="exit"
       transition={{ ...transition, delay: 1.2 }}
-      style={{ position: "absolute", zIndex: 3 }}
+      style={{ position: "absolute", zIndex: 4 }}
     >
       <Image
         src={bgbird}
@@ -100,6 +105,19 @@ const Preloader = () => (
         height={200}
         className="image w-64 h-64 mb-16 mr-3"
       />
+
+    </motion.div>
+    <motion.div
+      variants={fifthImageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ ...transition, delay: 0.3 }}
+      style={{ position: "absolute", zIndex: 1 }}
+      className="image w-80 h-80   rounded-full bg-white"
+    >
+     
+
     </motion.div>
   </div>
 );

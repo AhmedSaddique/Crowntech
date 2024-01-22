@@ -14,7 +14,7 @@ const ChooseUs = ({className, flex = "md:flex",maintitle,image1,mainimage,image2
   return (
     <>
     <Container>
-    <div className='pt-10 space-y-10'>
+    <div className='pt-20 pb-20 space-y-10'>
         <HeadingH2 className={"text-center "} title={maintitle} />
         <div className={`flex flex-wrap md:flex-nowrap gap-4 ${className} ${flex}`}>
 

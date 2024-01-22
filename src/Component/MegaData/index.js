@@ -51,7 +51,6 @@ const MegaData = ({ categoryId,onLinkClick }) => {
   const handleServiceClick = useCallback(
     (serviceId) => {
       setid(serviceId);
-      onLinkClick();
       router.push(`/service/${serviceId}`);
     },
     [setid, router]

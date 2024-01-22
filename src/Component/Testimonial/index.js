@@ -40,7 +40,7 @@ const Testimonial = () => {
 
   return (
    <div>
-     <Container className={"pt-10"}>
+     <Container className={"pt-20 pb-20"}>
       <div className={` space-y-5 bg-testi bg-no-repeat bg-left-bottom`}>
       <HeadingH2 className={''} title={"What our customers are saying"} />
       <div className='flex justify-between flex-wrap '>

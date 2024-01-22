@@ -16,7 +16,7 @@ const Information = ({image , badge, title ,para , button,endicon,starticon,link
   return (
     <>
  <div>
- <Container className={'backdrop-blur-3xl '}>
+ <Container className={'backdrop-blur-3xl pb-20 '}>
     <div className='pt-10'>
     <div className='grid grid-cols-1 md:grid-cols-2 rounded-md shadow   space-y-10 ' >
     <div className='hidden md:flex'>

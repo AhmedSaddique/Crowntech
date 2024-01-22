@@ -5,18 +5,16 @@ export const Para16 = ({
   title,
   icon,
   className,
-  initial = { opacity: 0, x: -40 },
-  animate = { opacity: 1, x: 0 },
-  transition = { duration: 0.8 },
+ 
 }) => {
   return (
-    <motion.div initial={initial} animate={animate} transition={transition}
+    <div
     >
       <p className={`text-16  gap-2 ${className}`}>
         {icon}
         {title}
       </p>
-    </motion.div>
+    </div>
   );
 };
 
@@ -24,34 +22,30 @@ export const Para14 = ({
   title,
   icon,
   className,
-  initial = { opacity: 0, x: -40 },
-  animate = { opacity: 1, x: 0 },
-  transition = { duration: 0.8 },
+
 }) => {
   return (
-    <motion.div initial={initial} animate={animate} transition={transition}>
+    <div >
       <p className={`text-14  gap-2 ${className}`}>
         {icon}
         {title}
       </p>
-    </motion.div>
+    </div>
   );
 };
 export const Para12 = ({
   title,
   icon,
   className,
-  initial = { opacity: 0, x: -40 },
-  animate = { opacity: 1, x: 0 },
-  transition = { duration: 0.8 },
+ 
 }) => {
   return (
-    <motion.div initial={initial} animate={animate} transition={transition}>
+    <div >
       <p className={`text-12  gap-2 ${className}`}>
         {icon}
         {title}
       </p>
-    </motion.div>
+    </div>
   );
 };
 
@@ -59,17 +53,18 @@ export const Para18 = ({
   title,
   icon,
   className,
-  initial = { opacity: 0, x: -40 },
-  animate = { opacity: 1, x: 0 },
-  transition = { duration: 0.8 },
+  // initial = { opacity: 0, x: -40 },
+  // animate = { opacity: 1, x: 0 },
+  // transition = { duration: 0.8 },
 }) => {
   return (
-    <motion.div initial={initial} animate={animate} transition={transition}
+    <div
+    //  initial={initial} animate={animate} transition={transition}
     >
       <p className={`text-18  gap-2 ${className}`}>
         {icon}
         {title}
       </p>
-    </motion.div>
+    </div>
   );
 };

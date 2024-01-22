@@ -9,8 +9,6 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Drawer, Tabs } from "antd";
 import { ImCross } from "react-icons/im";
-import { BiLogoGmail } from "react-icons/bi";
-import { BsTelephoneFill } from "react-icons/bs";
 import TabsComponent from "../TabsComponent";
 import Container from "../Container";
 import Logo from "../Logo";
@@ -71,7 +69,7 @@ const Header = ({ className }) => {
     onClose();
   };
   const handleScroll = () => {
-    if (window.scrollY < 200) {
+    if (window.scrollY < 5) {
       setScrollingUp(true);
     } else {
       setScrollingUp(false);
@@ -84,6 +82,11 @@ const Header = ({ className }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  // Define the styles for default and scrolled states
+  const defaultStyle = "bg-primary-blue500 dark:bg-white/100"; // Full opacity or no blur in dark mode
+  const scrolledStyle = "bg-primary-blue500 dark:bg-white/30 dark:backdrop-blur-md"; // Reduced opacity and blur in dark mode
+
   const [isModalOpen, setIsModalOpen] = useState([false, false]);
   const token = useTheme();
   const toggleModal = (idx, target) => {
@@ -96,59 +99,21 @@ const Header = ({ className }) => {
   return (
     <>
       <nav
-        className={`bg-primary-blue500 text-white dark:bg-primary-light dark:text-black  sticky top-0  z-20 shadow-xl drop-shadow ${
-          scrollingUp ? "show" : "hide"
-        }`}
+        className={`bg-primary-blue500 text-white dark:text-black  sticky top-0  z-20 shadow-xl  ${
+            scrollingUp ? defaultStyle : scrolledStyle
+          }`}
+        
       >
-        <Container className="flex flex-col xs:flex-row xs:justify-between xs:flex-wrap">
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-wrap sm:flex gap-3 p-2"
-          >
-            <p className="text-14 flex gap-2">
-              <BiLogoGmail size={20} />
-              info@crownintltechnology.com
-            </p>
-            <p className="text-14 flex ap-2">
-              <BsTelephoneFill size={20} />
-              +92 328 0143786
-            </p>
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="hidden  md:flex flex-row  xs:items-center gap-4 p-2"
-          >
-            <Link className="font-normal" href="/login">
-              Free Trial
-            </Link>
-            <Link className="font-normal" href="/login">
-              Login
-            </Link>
-          </motion.div>
-        </Container>
-
-        <div
-          className={`  dark:border-b-primary-black  bg-primary-white border-b-2 w-[95%] mx-auto`}
-        />
         <Container className="flex justify-between py-4 pt-2 pb-2 ">
           <div className="relative z-10">
             <Logo />
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0, staggerChildren: 0.2 }}
-            transition={{ duration: 0.5 }}
-            className="lg:flex  lg:gap-10 items-center hidden "
-          >
+          <div className="lg:flex  lg:gap-10 items-center hidden ">
             <Navlink onClose={() => setMobileMenuOpen(false)} />
-          </motion.div>
+          </div>
           <div className="flex gap-4">
             <div className="flex items-center gap-2">
-              <Switcher/>
+          
               <Button
                 onClick={() => toggleModal(0, true)}
                 className={"border-none"}
@@ -196,11 +161,12 @@ const Header = ({ className }) => {
                   </button>
                 </form>
               </Modal>
+              <Switcher />
               <Button
-                className={"border-none"}
+                className='border-none px-2 py-1 gap-1  bg-gradient-to-r from-primary-btn1 hover:from-primary-btn3 via-primary-btn2 to-primary-btn3 hover:to-primary-btn1 text-primary-white transition duration-400 shadow-md'
                 onClick={showDrawer}
                 btnicon={<HiOutlineBars3BottomRight size={25} />}
-                text=""
+                text="APP"
               />
               <Drawer
                 width={700}
@@ -222,7 +188,7 @@ const Header = ({ className }) => {
                     className={`flex  justify-center border-2 hover:scale-105  shadow-md text-primary-white hover:shadow-lg duration-100 transition rounded-md p-2 w-10`}
                     onClick={handleCloseDrawer}
                   >
-                    <ImCross />
+                    <ImCross /> 
                   </div>
                   <div>
                     <Tabs
@@ -234,6 +200,9 @@ const Header = ({ className }) => {
                   </div>
                 </div>
               </Drawer>
+              <Link className="font-medium lg:block hidden " href="/login">
+                Login
+              </Link>
             </div>
             <div className="lg:hidden">
               <button
@@ -255,9 +224,6 @@ const Header = ({ className }) => {
                     <Navlink onClose={() => setMobileMenuOpen(false)} />
                   </div>
                   <div className="flex flex-row  xs:items-center gap-4 pt-3">
-                    <Link className="font-medium" href="/login">
-                      Free Trial
-                    </Link>
                     <Link className="font-medium" href="/login">
                       Login
                     </Link>

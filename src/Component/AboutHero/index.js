@@ -9,7 +9,7 @@ const AboutHero = () => {
 
   return (
     <>
-    <div className={`pt-10 bg-aboutfinger bg-right-top bg-no-repeat`}>
+    <div className={`pt-20 pb-20 bg-aboutfinger bg-right-top bg-no-repeat`}>
     <div className='md:w-8/12 mx-auto text-center my-10 '>
     <HeadingH6 title={"Who we are"}/>
     <HeadingH2  title={"Crown International Technology: Redefining the Digital Frontier Unlocking Digital Potential, Empowering Global Progress."}/>

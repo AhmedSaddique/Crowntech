@@ -12,7 +12,7 @@ import Container from '../Container'
 const Newsletter = () => {
   return (
     <>
-     <Container className={'mt-10'}>
+     <Container className={'pt-20 pb-20'}>
      <div className='bg-primary-blue400 bg-newsletter bg-no-repeat bg-right-top rounded-md'>
     <div className='flex flex-wrap md:flex-nowrap gap-5 p-4 pt-20 pb-20'>
     <div className='relative w-full md:w-6/12 '>

@@ -9,7 +9,7 @@ import Container from '../Container';
 const Team = () => {
 
   return (
-    <Container>
+    <Container className={`pt-20 pb-20`}>
  <div className='relative pb-10 '>
  <HeadingH6 title={"Our leadership team"} />
       <HeadingH2 title={"Meet the amazing team"} />

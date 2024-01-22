@@ -13,7 +13,7 @@ const ContactForm = () => {
     return (
         <>
 <Container>
-<div className='grid grid-cols-1 md:grid-cols-2 gap-5 mt-10 pb-10'>
+<div className='grid grid-cols-1 md:grid-cols-2 gap-5 pt-20 pb-20'>
                 <div className='space-y-3 pb-10'>
                     <HeadingH2 title={"Get in touch"} />
                     <Para14 title={"Do you want to know more or contact our sales department?"} />
@@ -75,7 +75,7 @@ const ContactForm = () => {
                             />
                         </div>
                         <Commentarea/>
-                        <Button className='border-none px-4 py-2 bg-gradient-to-r from-primary-btn1 hover:from-primary-btn3 via-primary-btn2 to-primary-btn3 hover:to-primary-btn1 text-primary-white transition duration-400 shadow-md' text={"Submit"}/>
+                        <Button className='border-none px-4 py-2 mt-5 bg-gradient-to-r from-primary-btn1 hover:from-primary-btn3 via-primary-btn2 to-primary-btn3 hover:to-primary-btn1 text-primary-white transition duration-400 shadow-md' text={"Submit"}/>
 
 
 

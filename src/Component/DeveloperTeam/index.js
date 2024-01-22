@@ -8,7 +8,7 @@ import Image from "next/image";
 const DeveloperTeam = () => {
   return (
     <>
-      <Container>
+      <Container className={`pt-20 pb-20`}>
         <div className="relative pb-10 ">
           <HeadingH6 title={"Our Developer Team"} />
           <HeadingH2 title={"Meet The Amazing Team"} />

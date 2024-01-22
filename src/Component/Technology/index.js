@@ -19,7 +19,7 @@ const Technology = () => {
 
   return (
 <>
- <Container className={'bg-aboutfinger bg-no-repeat pt-10  bg-left-bottom'}>
+ <Container className={'bg-aboutfinger bg-no-repeat pt-20 pb-20 bg-left-bottom'}>
         <div className='w-full flex gap-4'>
           <Image src={arrowDown} alt='Arrow' className='h-20 animate-bounce delay-1000' />
           <div className='space-y-4 pb-10'>
