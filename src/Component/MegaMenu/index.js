@@ -97,7 +97,7 @@ const MegaMenu = ({
               ))}
             </div>
             <div
-              className={`${className} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-9/12 pb-[30vh]`}
+              className={`${className} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-9/12 md:p-3 p-1 pb-[30vh]`}
             >
               {activeCategoryId && (
                 <ServiceContext>

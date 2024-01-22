@@ -179,7 +179,7 @@ const ProductHero = () => {
                   <NextLink
                     href="/product"
                     key={index}
-                    className={` hover:bg-primary-blue100 dark:hover:bg-primary-blue100 dark:hover:text-white space-y-2 shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}
+                    className={` hover:bg-primary-blue100 p-2 shadow-2xl  dark:hover:bg-primary-blue100 dark:hover:text-white space-y-2 dark:shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}
                   >
                     <Image
                       className="w-[50px] mx-auto"
@@ -201,7 +201,7 @@ const ProductHero = () => {
                   <NextLink
                     href="/product"
                     key={index}
-                    className={` hover:bg-primary-blue100 dark:hover:bg-primary-blue100 dark:hover:text-white space-y-2 shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}
+                    className={` hover:bg-primary-blue100 p-2 shadow-2xl dark:hover:bg-primary-blue100 dark:hover:text-white space-y-2 dark:shadow  hover:scale-105 transition duration-300 text-center pt-5 pb-5  rounded-md `}
                   >
                     <Image
                       className="w-[50px] mx-auto"

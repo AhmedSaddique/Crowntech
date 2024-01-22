@@ -1,5 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
+import techarrow from "../../../public/assets/images/techarrow.svg";
+import techcircle from "../../../public/assets/images/techcircle.svg";
+import techleft from "../../../public/assets/images/techleft.svg";
+import techright from "../../../public/assets/images/techright.svg";
+import techname from "../../../public/assets/images/techname.svg";
+
 import bird from "../../../public/assets/images/bird.svg";
 import circle from "../../../public/assets/images/circle.svg";
 import travokey from "../../../public/assets/images/Travokey.svg"; // Replace with your actual asset path
@@ -7,15 +13,15 @@ import bgbird from "../../../public/assets/images/bird-back.svg"; // Replace wit
 import Image from "next/image";
 
 const firstImageVariants = {
-  initial: { x: "-100vw", opacity: 0 },
-  animate: { x: 0, opacity: 1 },
-  exit: { opacity: 0 },
+  initial: { y: "-100vw", opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  exit: { opacity: 0, transition: { duration: .6 } },
 };
 
 const secondImageVariants = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  exit: { opacity: 0, transition: { duration: .5 } },
+  exit: { opacity: 0, transition: { duration: .7 } },
 };
 
 const thirdImageVariants = {
@@ -50,11 +56,11 @@ const Preloader = () => (
       style={{ position: "absolute", zIndex: 5 }}
     >
       <Image
-        src={bird}
+        src={techarrow}
         alt="Bird Image"
         width={200}
         height={200}
-        className="image w-28 h-28 mb-20 mr-4"
+        className="image w-40 h-40 mb-24 ml-2 "
       />
     </motion.div>
     <motion.div
@@ -62,11 +68,11 @@ const Preloader = () => (
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ duration: 1, delay: .6 }}
+      transition={{ duration: 1, delay: 1 }}
       style={{ position: "absolute", zIndex: 2 }}
     >
       <Image
-        src={circle}
+        src={techcircle}
         alt="Circle Image"
         width={200}
         height={200}
@@ -78,15 +84,15 @@ const Preloader = () => (
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ ...transition, delay: 1 }}
+      transition={{ ...transition, delay: 1.3 }}
       style={{ position: "absolute", zIndex: 3 }}
     >
       <Image
-        src={travokey}
+        src={techright}
         alt="Third Image"
         width={200}
         height={200}
-        className="image mt-14"
+        className="image ml-3 w-72 h-72 mb-2"
       />
     </motion.div>
 
@@ -95,15 +101,32 @@ const Preloader = () => (
       initial="initial"
       animate="animate"
       exit="exit"
-      transition={{ ...transition, delay: 1.2 }}
+      transition={{ ...transition, delay: 1.5 }}
       style={{ position: "absolute", zIndex: 4 }}
     >
       <Image
-        src={bgbird}
+        src={techleft}
         alt="Fourth Image"
         width={200}
         height={200}
-        className="image w-64 h-64 mb-16 mr-3"
+        className="image w-40 h-40  mb-[3.8rem] mr-[6.5rem]"
+      />
+
+    </motion.div>
+    <motion.div
+      variants={fifthImageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      transition={{ ...transition, delay: 1.5 }}
+      style={{ position: "absolute", zIndex: 4 }}
+    >
+      <Image
+        src={techname}
+        alt="Fourth Image"
+        width={200}
+        height={200}
+        className="image  mb-80"
       />
 
     </motion.div>
