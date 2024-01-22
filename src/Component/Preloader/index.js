@@ -40,7 +40,7 @@ const transition = {
   ease: "easeInOut",
 };
 const Preloader = () => (
-  <div className="preloader bg-primary-blue500 dark:bg-white  " style={{ position: "relative" }}>
+  <div className="preloader bg-white  " style={{ position: "relative" }}>
     <motion.div
       variants={firstImageVariants}
       initial="initial"
