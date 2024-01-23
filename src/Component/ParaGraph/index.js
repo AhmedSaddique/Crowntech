@@ -53,6 +53,7 @@ export const Para18 = ({
   title,
   icon,
   className,
+  endicon
   // initial = { opacity: 0, x: -40 },
   // animate = { opacity: 1, x: 0 },
   // transition = { duration: 0.8 },
@@ -64,6 +65,7 @@ export const Para18 = ({
       <p className={`text-18  gap-2 ${className}`}>
         {icon}
         {title}
+        {endicon}
       </p>
     </div>
   );

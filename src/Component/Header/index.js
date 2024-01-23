@@ -85,7 +85,7 @@ const Header = ({ className }) => {
 
   // Define the styles for default and scrolled states
   const defaultStyle = "bg-primary-blue500 dark:bg-white/100"; // Full opacity or no blur in dark mode
-  const scrolledStyle = "bg-primary-blue500 dark:bg-white/30 dark:backdrop-blur-md"; // Reduced opacity and blur in dark mode
+  const scrolledStyle = "bg-primary-blue500/30 backdrop-blur-md dark:bg-white/30 dark:backdrop-blur-md"; // Reduced opacity and blur in dark mode
 
   const [isModalOpen, setIsModalOpen] = useState([false, false]);
   const token = useTheme();
@@ -99,7 +99,7 @@ const Header = ({ className }) => {
   return (
     <>
       <nav
-        className={`bg-primary-blue500 text-white dark:text-black  sticky top-0  z-20 shadow-xl  ${
+        className={`   text-white dark:text-black  sticky top-0  z-20 shadow-xl  ${
             scrollingUp ? defaultStyle : scrolledStyle
           }`}
         

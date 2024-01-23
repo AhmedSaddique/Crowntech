@@ -5,11 +5,6 @@ import techcircle from "../../../public/assets/images/techcircle.svg";
 import techleft from "../../../public/assets/images/techleft.svg";
 import techright from "../../../public/assets/images/techright.svg";
 import techname from "../../../public/assets/images/techname.svg";
-
-import bird from "../../../public/assets/images/bird.svg";
-import circle from "../../../public/assets/images/circle.svg";
-import travokey from "../../../public/assets/images/Travokey.svg"; // Replace with your actual asset path
-import bgbird from "../../../public/assets/images/bird-back.svg"; // Replace with your actual asset path
 import Image from "next/image";
 
 const firstImageVariants = {

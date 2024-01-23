@@ -10,7 +10,6 @@ import teamhero3 from '../../../public/assets/images/teamhero3.png'
 import aboutm1 from '../../../public/assets/images/aboutm1.jpg'
 import teamhero5 from '../../../public/assets/images/teamhero5.jpg'
 import teamhero6 from '../../../public/assets/images/teamhero6.png'
-
 import arrowDown from '../../../public/assets/images/arrowDown.png'
 
 

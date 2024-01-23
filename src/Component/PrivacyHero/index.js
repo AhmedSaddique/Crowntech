@@ -12,8 +12,7 @@ const PrivacyHero = () => {
     <Container className={'flex flex-col justify-center items-center space-y-5 text-primary-white'}>
        <HeadingH1 title={'Terms and Condition'}/> 
        <Para16 title={'Under no circumstances shall AliThemes be liable for any direct, '}/>
-        <Image src={heropolicy} className=' hidden md:block md:h-[200px] lg:h-[300px] xl:h-[350px] xxl:h-[450px] rounded-md object-center bg-center object-cover' alt='heropolicy'/>
-    </Container>  
+     </Container>  
     </div>
     </>
   )
