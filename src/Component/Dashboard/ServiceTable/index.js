@@ -94,7 +94,7 @@ const ServiceTable = () => {
     setSearchText(event.target.value);
     setCurrentPage(1);
   };
-  
+
   return (
     <div className="container mx-auto px-4 sm:px-8">
       <div className="py-8">
@@ -127,9 +127,9 @@ const ServiceTable = () => {
                 onChange={handleFilterChange}
               >
                 <option value="All">All</option>
-                {servicecat.map((servicecate , index)=>(
+                {servicecat.map((servicecate , index1)=>(
                 <>
-                <option key={index} value={servicecate.catName}>
+                <option key={index1} value={servicecate.catName}>
                   {servicecate.catName}
                 </option>
                     </>
@@ -198,9 +198,9 @@ const ServiceTable = () => {
               </thead>
               <tbody>
                 {serviceinfoSlice.map((servicein, index) => (
-                  <tr>
+                  <tr key={index}>
                     <>
-                      <td className="px-5 py-5 bg-white text-sm" key={index}>
+                      <td className="px-5 py-5 bg-white text-sm" >
                         <p className="text-gray-900 whitespace-no-wrap">
                           {servicein.category.id}
                         </p>
