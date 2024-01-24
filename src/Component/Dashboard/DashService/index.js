@@ -69,7 +69,7 @@ const DashService = () => {
         <AddService />
         </ServiceContext>
       </Drawer>
-
+      
       <ServiceTable  />
     </Container>
   );

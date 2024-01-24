@@ -36,6 +36,7 @@ export const serviceinfoGET = async (req) => {
       }
     };
 
+    
 export const serviceinfoGetbyID = async (req, {params}) =>{
     try {
         const id = params.id;
