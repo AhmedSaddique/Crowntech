@@ -5,7 +5,6 @@ import { TbMenu2 } from "react-icons/tb";
 import { AiOutlineSearch } from "react-icons/ai";
 import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { Modal } from "antd";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { Drawer, Tabs } from "antd";
 import { ImCross } from "react-icons/im";
@@ -14,10 +13,13 @@ import Container from "../Container";
 import Logo from "../Logo";
 import Navlink from "../NavLink";
 import Button from "../Button";
-import { motion } from "framer-motion";
 import HeaderServiceTab from "../HeaderServiceTab";
 import ServiceContext from "../ServiceContext";
 import Switcher from "../Switcher";
+import Image from "next/image";
+import searchimg from "../../../public/assets/images/choosemain.png"
+import { HeadingH6 } from "../Heading";
+import { Para12 } from "../ParaGraph";
 
 const Header = ({ className }) => {
   const [open, setOpen] = useState(false);
@@ -85,10 +87,10 @@ const Header = ({ className }) => {
 
   // Define the styles for default and scrolled states
   const defaultStyle = "bg-primary-blue500 dark:bg-white/100"; // Full opacity or no blur in dark mode
-  const scrolledStyle = "bg-primary-blue500/30 backdrop-blur-md dark:bg-white/30 dark:backdrop-blur-md"; // Reduced opacity and blur in dark mode
+  const scrolledStyle =
+    "bg-primary-blue500/30 backdrop-blur-md dark:bg-white/30 dark:backdrop-blur-md"; // Reduced opacity and blur in dark mode
 
   const [isModalOpen, setIsModalOpen] = useState([false, false]);
-  const token = useTheme();
   const toggleModal = (idx, target) => {
     setIsModalOpen((p) => {
       p[idx] = target;
@@ -100,9 +102,8 @@ const Header = ({ className }) => {
     <>
       <nav
         className={`   text-white dark:text-black  sticky top-0  z-20 shadow-xl  ${
-            scrollingUp ? defaultStyle : scrolledStyle
-          }`}
-        
+          scrollingUp ? defaultStyle : scrolledStyle
+        }`}
       >
         <Container className="flex justify-between py-4 pt-2 pb-2 ">
           <div className="relative z-10">
@@ -113,22 +114,22 @@ const Header = ({ className }) => {
           </div>
           <div className="flex gap-4">
             <div className="flex items-center gap-5">
-          
               <Button
                 onClick={() => toggleModal(0, true)}
                 className={"border-none"}
                 text={<AiOutlineSearch size={25} />}
               />
               <Modal
-                centered
+               
                 open={isModalOpen[0]}
                 onOk={() => toggleModal(0, false)}
                 onCancel={() => toggleModal(0, false)}
+                width={650}
                 maskStyle={{ backdropFilter: "blur(10px)" }}
                 className="searchmodal"
                 footer=""
               >
-                <form className="relative border-none mt-6 ">
+                <form className="relative border-none mt-6 mb-5">
                   <div className="absolute inset-y-0 flex items-center  pl-3 pointer-events-none">
                     <svg
                       className="w-4 h-4 text-main"
@@ -160,10 +161,18 @@ const Header = ({ className }) => {
                     Search
                   </button>
                 </form>
+                <div className=" border p-2 mt-2 mb-2 rounded-md flex gap-3 shadow cursor-pointer hover:border-primary-blue100 duration-300 transition">
+                  <Image src={searchimg} width={500} height={500} className="h-20 bg-cover bg-center w-20 rounded-md " alt={searchimg}/>
+                  <div>
+                    <HeadingH6 title={'React Framework'}/>
+                    <Para12 title={"onal Technology’s aim is to empower people, businesses, and organisations throughout the world by utilising cutting-edge digital technology. We work hard to provide cutting-edge solutions th"}/>
+                  </div>
+                </div>
+
               </Modal>
               <Switcher />
               <Button
-                className='border-none px-2 py-1 gap-1  bg-gradient-to-r from-primary-btn1 hover:from-primary-btn3 via-primary-btn2 to-primary-btn3 hover:to-primary-btn1 text-primary-white transition duration-400 shadow-md'
+                className="border-none px-2 py-1 gap-1  bg-gradient-to-r from-primary-btn1 hover:from-primary-btn3 via-primary-btn2 to-primary-btn3 hover:to-primary-btn1 text-primary-white transition duration-400 shadow-md"
                 onClick={showDrawer}
                 btnicon={<HiOutlineBars3BottomRight size={25} />}
                 text="APP"
@@ -188,7 +197,7 @@ const Header = ({ className }) => {
                     className={`flex  justify-center border-2 hover:scale-105  shadow-md text-primary-white hover:shadow-lg duration-100 transition rounded-md p-2 w-10`}
                     onClick={handleCloseDrawer}
                   >
-                    <ImCross /> 
+                    <ImCross />
                   </div>
                   <div>
                     <Tabs
