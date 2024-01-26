@@ -17,9 +17,10 @@ import HeaderServiceTab from "../HeaderServiceTab";
 import ServiceContext from "../ServiceContext";
 import Switcher from "../Switcher";
 import Image from "next/image";
-import searchimg from "../../../public/assets/images/choosemain.png"
+import searchimg from "../../../public/assets/images/choosemain.png";
 import { HeadingH6 } from "../Heading";
-import { Para12 } from "../ParaGraph";
+import { Para12, Para14, Para16 } from "../ParaGraph";
+import { FaArrowRight } from "react-icons/fa6";
 
 const Header = ({ className }) => {
   const [open, setOpen] = useState(false);
@@ -97,6 +98,12 @@ const Header = ({ className }) => {
       return [...p];
     });
   };
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + "..."; // Truncate text and add ellipsis
+    }
+    return text;
+  };
 
   return (
     <>
@@ -120,7 +127,6 @@ const Header = ({ className }) => {
                 text={<AiOutlineSearch size={25} />}
               />
               <Modal
-               
                 open={isModalOpen[0]}
                 onOk={() => toggleModal(0, false)}
                 onCancel={() => toggleModal(0, false)}
@@ -161,14 +167,74 @@ const Header = ({ className }) => {
                     Search
                   </button>
                 </form>
-                <div className=" border p-2 mt-2 mb-2 rounded-md flex gap-3 shadow cursor-pointer hover:border-primary-blue100 duration-300 transition">
-                  <Image src={searchimg} width={500} height={500} className="h-20 bg-cover bg-center w-20 rounded-md " alt={searchimg}/>
-                  <div>
-                    <HeadingH6 title={'React Framework'}/>
-                    <Para12 title={"onal Technology’s aim is to empower people, businesses, and organisations throughout the world by utilising cutting-edge digital technology. We work hard to provide cutting-edge solutions th"}/>
+                <div className="max-h-[500px] overflow-x-scroll">
+                  <div className=" mt-3 mb-6">
+                    <Link href={"/"} className=" hover:text-black  relative">
+                      <div className=" border p-2 pt-5 mb-2 flex items-center rounded-md shadow cursor-pointer hover:border-primary-blue100 duration-300 transition">
+                        <Para16
+                          className={
+                            " rounded-md font-medium bg-white w-20 text-center absolute left-3 -top-4 text-primary-blue100"
+                          }
+                          title={"Service"}
+                        />
+                        <div className=" flex gap-3 ">
+                          <Image
+                            src={searchimg}
+                            width={900}
+                            height={500}
+                            className="h-16 bg-cover bg-center w-16 rounded-md "
+                            alt={searchimg}
+                          />
+                          <div>
+                            <HeadingH6 title={"React Framework"} />
+                            <Para12
+                              title={truncateText(
+                                "onal Technology’s aim is to empower people, businesses, and organisations throughout the world by utilising cutting-edge digital technology. We work hard to provide cutting-edge solutions th",
+                                160
+                              )}
+                            />
+                          </div>
+                        </div>
+                        <Link className="hover:text-black" href={"/"}>
+                          <FaArrowRight size={25} />{" "}
+                        </Link>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className=" mt-3 mb-6">
+                    <Link href={"/"} className=" hover:text-black  relative">
+                      <div className=" border p-2 pt-5 mb-2 flex items-center rounded-md shadow cursor-pointer hover:border-primary-blue100 duration-300 transition">
+                        <Para16
+                          className={
+                            " rounded-md font-medium bg-white w-20 text-center absolute left-3 -top-4 text-primary-blue100"
+                          }
+                          title={"Service"}
+                        />
+                        <div className=" flex gap-3 ">
+                          <Image
+                            src={searchimg}
+                            width={900}
+                            height={500}
+                            className="h-16 bg-cover bg-center w-16 rounded-md "
+                            alt={searchimg}
+                          />
+                          <div>
+                            <HeadingH6 title={"React Framework"} />
+                            <Para12
+                              title={truncateText(
+                                "onal Technology’s aim is to empower people, businesses, and organisations throughout the world by utilising cutting-edge digital technology. We work hard to provide cutting-edge solutions th",
+                                160
+                              )}
+                            />
+                          </div>
+                        </div>
+                        <Link className="hover:text-black" href={"/"}>
+                          <FaArrowRight size={25} />{" "}
+                        </Link>
+                      </div>
+                    </Link>
                   </div>
                 </div>
-
               </Modal>
               <Switcher />
               <Button
