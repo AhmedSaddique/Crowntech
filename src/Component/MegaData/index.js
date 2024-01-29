@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useState, useCallback } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { UseidContext } from "../ServiceContext";
 import { HeadingH4, HeadingH6 } from "../Heading";
 import { Para12 } from "../ParaGraph";
-import { motion } from "framer-motion";
 
 const MegaData = ({ categoryId,onLinkClick }) => {
   const [serviceinfo, setserviceinfo] = useState([]);
@@ -22,40 +20,32 @@ const MegaData = ({ categoryId,onLinkClick }) => {
     return text;
   };
 
-  useEffect(() => {
-    const fetchServiceInfo = async () => {
-      try {
-        const response = await axios.get(`/api/serviceinfo`);
-        setserviceinfo(response.data.serviceinfos);
-        const firstFilteredService = response.data.serviceinfos.find(
-          (service) => service.id === id
-        );
-        if (firstFilteredService && firstFilteredService.id) {
-          setid(firstFilteredService.id);
-        }
-      } catch (error) {
-        console.error("Error getting service info:", error);
-      }
-    };
+// Fetch service info
+useEffect(() => {
+  const fetchServiceInfo = async () => {
+    try {
+      const response = await axios.get(`/api/serviceinfo`);
+      setserviceinfo(response.data.serviceinfos);
+      // Optionally, handle setting the initial id here if needed
+    } catch (error) {
+      console.error("Error getting service info:", error);
+    }
+  };
 
-    fetchServiceInfo();
-  }, [categoryId, setid]);
+  fetchServiceInfo();
+}, [categoryId]);
 
-  useEffect(() => {
-    const filteredData = serviceinfo.filter(
-      (service) => service.categoryId === categoryId
-    );
-    setFilteredServiceInfo(filteredData);
-  }, [serviceinfo, categoryId]);
+// Filter service information based on category
+useEffect(() => {
+  const filteredData = serviceinfo.filter(service => service.categoryId === categoryId);
+  setFilteredServiceInfo(filteredData);
+}, [serviceinfo, categoryId]);
 
-  const handleServiceClick = useCallback(
-    (serviceId) => {
-      setid(serviceId);
-      router.push(`/service/${serviceId}`);
-    },
-    [setid, router]
-  );
-
+// Handle service click
+const handleServiceClick = useCallback((serviceId) => {
+  setid(serviceId);
+  router.push(`/service/${serviceId}`);
+}, [router]);
   return (
     <>
       <div className="flex items-center p-3 ">

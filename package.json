@@ -18,6 +18,8 @@
     "generate": "^0.14.0",
     "next": "14.0.3",
     "next-themes": "^0.2.1",
+    "pg": "^8.11.3",
+    "pg-promise": "^11.5.4",
     "postinstall": "^0.8.0",
     "react": "^18",
     "react-dom": "^18",
@@ -33,5 +35,10 @@
     "postcss": "^8",
     "prisma": "^5.8.0",
     "tailwindcss": "^3.4.1"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

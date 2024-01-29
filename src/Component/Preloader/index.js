@@ -41,7 +41,7 @@ const transition = {
   ease: "easeInOut",
 };
 const Preloader = () => (
-  <div className="preloader bg-white  " style={{ position: "relative" }}>
+  <motion.div className="preloader bg-white  " style={{ position: "relative" }}>
     <motion.div
       variants={firstImageVariants}
       initial="initial"
@@ -137,7 +137,7 @@ const Preloader = () => (
      
 
     </motion.div>
-  </div>
+  </motion.div> 
 );
 
 export default Preloader;

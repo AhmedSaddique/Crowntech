@@ -6,7 +6,7 @@ export const InputForm = ({type="text" ,placeholder ,InputIcon ,name , value ,on
     <div className='pb-3'>
       <div className="flex items-center rounded-lg  border px-3 hover:border-primary-gray200 duration-300 transition focus:outline-primary-gray200">
         <input
-          className="appearance-none bg-transparent text-black border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
+          className="appearance-none bg-transparent  border-none w-full mr-3 py-3 px-2 leading-tight focus:outline-none"
           type={type}
           placeholder={placeholder}
           name={name}
