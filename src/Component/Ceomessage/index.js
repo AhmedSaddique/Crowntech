@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../Container";
-import { HeadingH1, HeadingH4, HeadingH5 } from "../Heading";
+import { HeadingH1, HeadingH3, HeadingH4, HeadingH5 } from "../Heading";
 import Image from "next/image";
 import ceo2 from "../../../public/assets/images/ceo2.png";
 import { Para16, Para18 } from "../ParaGraph";
@@ -23,8 +23,9 @@ const CeoMessage = () => {
         
         />
       </div>
-      <div className=" rounded-md flex pt-5 mt-20 bg-primary-blue100 dark:bg-white shadow-xl">
-        <div className="w-4/6 lg:p-8 md:p-6 sm:p-4 p-2 ">
+      <div className=" rounded-md  pt-5 mt-20 bg-primary-blue100 dark:bg-white shadow-xl">
+        <div className=" lg:p-8 md:p-6 sm:p-4 p-2 space-y-3 ">
+          <HeadingH3 className={'border-b-2'} title={'CEO Message'}/>
           <Para18
             className={"pt-3 pb-3 "}
             icon={<FaQuoteLeft size={25} />}
@@ -39,9 +40,7 @@ const CeoMessage = () => {
           />
           <Para16 className={"font-medium"} title={"CEO & FOUNDER"} />
         </div>
-        <div>
-          <Image width={400} height={400} src={ceo2} />
-        </div>
+      
       </div>
     </Container>
   );

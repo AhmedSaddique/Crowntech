@@ -1,10 +1,10 @@
+"use client"
 import React from "react";
 import { motion } from "framer-motion";
 
 const Button = ({ text, onClick, className, btnicon, endicon, type }) => {
   return (
     <motion.div
-    
     >
       <motion.button
         whileHover={{ scale: 1 }}

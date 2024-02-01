@@ -15,10 +15,6 @@ const DropDown = ({ array, text, icon, onLinkClick,BtnClass, textSize = 'font-se
     setIsOpen(false);
   };
 
-  const openDropdown = () => {
-    setIsOpen(true);
-  };
-
 
 
   return (
@@ -35,13 +31,13 @@ const DropDown = ({ array, text, icon, onLinkClick,BtnClass, textSize = 'font-se
           className={`fixed ${alignment} z-20 rounded-md shadow bg-primary-blue400 dark:bg-primary-white`} >
           {
             array.map((array, index) => (
-          <div key={index}  onMouseEnter={openDropdown}
+          <div key={index}
           onMouseLeave={closeDropdown}
           ref={dropdownRef}>
                 <HeadingH5 className="mb-3" title={array.Category} />
                 {array.items.map((items, index) => (
                   <div onClick={onLinkClick} key={index}>
-                    <Link className='' href={items.href} onClick={() => setIsOpen(!isOpen)} key={index}>
+                    <Link className='' href={items.href}  key={index}>
                       <div className="flex gap-3 md:gap-5 justify-between items-center rounded-md hover:bg-primary-blue100 hover:text-white px-2 py-2">
                         {items.title}
                         <div className='bg-blue-600 text-[10px] text-white py-1 px-2 rounded-full'>

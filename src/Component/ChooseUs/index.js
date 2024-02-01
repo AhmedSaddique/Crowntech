@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Badges from '../Badges'
 import { Para14, Para16 } from '../ParaGraph'
 import { TiTick } from 'react-icons/ti'
-import Button from '../Button'
 import Container from '../Container'
 import Link from 'next/link'
 

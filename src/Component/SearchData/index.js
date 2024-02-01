@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { HeadingH6 } from "../Heading";
 import { Para12, Para16 } from "../ParaGraph";
 import { FaArrowRight } from "react-icons/fa6";
-import searchimg from "../../../public/assets/images/choosemain.png";
 import axios from "axios";
 
 const SearchData = () => {

@@ -79,7 +79,7 @@ const MegaMenu = ({
             <ImCross />
           </div>
           <div className="flex gap-1 " style={{width:"100%" , maxHeight:"calc(100vh - 65px)" }}>
-            <div className={` ${className}  p-1 overflow-y-scroll lg:max-h-[330px] xl:max-h-[420px] xxl:xl:max-h-max pt-5 w-full md:w-3/12  `}>
+            <div className={` ${className}  p-1 overflow-y-scroll lg:max-h-[330px] xl:max-h-[420px] xxl:xl:max-h-max pt-5 w-5/12 md:w-3/12  `}>
               {servicecat.map((category, index) => (
                 <div
                   key={index}
@@ -97,7 +97,7 @@ const MegaMenu = ({
               ))}
             </div>
             <div
-              className={`${className} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:w-9/12 md:p-3 p-1 pb-[30vh]`}
+              className={`${className} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-7/12 md:w-9/12 md:p-3 p-1 pb-[30vh]`}
             >
               {activeCategoryId && (
                 <ServiceContext>
