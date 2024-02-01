@@ -14,8 +14,8 @@ const MegaMenu = ({
   textSize = "font-semibold mt-0",
   alignment = "left-0",
   servicecatProp,
+  toggleMenu, isOpen, ...otherProps
 }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [servicecat, setservicecat] = useState(servicecatProp || []);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
 
@@ -36,21 +36,10 @@ const MegaMenu = ({
   }, []);
 
   const dropdownRef = useRef(null);
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-  const handleBothClicks = () => {
-    setIsOpen(!isOpen);
-    // onLinkClick();
-  };
-  const closeDropdown = () => {
-    setIsOpen(false);
-  };
-
-  const openDropdown = () => {
-    setIsOpen(true);
-  };
-
+  // const toggleMenu = () => {
+  //   setIsOpen(!isOpen);
+  // };
+ 
 
   const handleTabClick = (categoryId) => {
     setActiveCategoryId(categoryId);
@@ -59,7 +48,7 @@ const MegaMenu = ({
   return (
     <div className={`inline-block  ${textSize}`}>
       <button
-        onClick={handleBothClicks}
+        onClick={toggleMenu}
         className={`inline-flex  font-semibold  ${text && text} ${
           icon && icon
         }`}

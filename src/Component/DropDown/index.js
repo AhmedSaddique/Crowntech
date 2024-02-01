@@ -3,19 +3,15 @@ import Link from 'next/link';
 import { HeadingH5 } from '../Heading';
 
 
-const DropDown = ({ array, text, icon, onLinkClick,BtnClass, textSize = 'font-semibold mt-0', alignment = 'left-0' }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const DropDown = ({ array, text, icon, onLinkClick,BtnClass, textSize = 'font-semibold mt-0', alignment = 'left-0', toggleMenu, isOpen, ...otherProps }) => {
+  // const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  // const toggleMenu = () => {
+  //   setIsOpen(!isOpen);
+  // };
 
-  const closeDropdown = () => {
-    setIsOpen(false);
-  };
-
-
+ 
 
   return (
     <div className={`inline-block  ${textSize}`} >
@@ -32,7 +28,6 @@ const DropDown = ({ array, text, icon, onLinkClick,BtnClass, textSize = 'font-se
           {
             array.map((array, index) => (
           <div key={index}
-          onMouseLeave={closeDropdown}
           ref={dropdownRef}>
                 <HeadingH5 className="mb-3" title={array.Category} />
                 {array.items.map((items, index) => (

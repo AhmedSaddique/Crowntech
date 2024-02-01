@@ -9,6 +9,18 @@ import ServiceContext from '../ServiceContext';
 
 const Navlink = ({ onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+  const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
+
+  const toggleDropDown = () => {
+    setIsDropDownOpen(!isDropDownOpen);
+    if (isMegaMenuOpen) setIsMegaMenuOpen(false);
+  };
+
+  const toggleMegaMenu = () => {
+    setIsMegaMenuOpen(!isMegaMenuOpen);
+    if (isDropDownOpen) setIsDropDownOpen(false);
+  };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -21,6 +33,8 @@ const Navlink = ({ onClose }) => {
       </Link>
         <DropDown
           onLinkClick={onClose}
+          toggleMenu={toggleDropDown}
+          isOpen={isDropDownOpen}
           alignment="sm:text-start p-3 "
           text="About"
           icon={
@@ -42,7 +56,8 @@ const Navlink = ({ onClose }) => {
         />
         <ServiceContext>
         <MegaMenu
-          
+           toggleMenu={toggleMegaMenu}
+           isOpen={isMegaMenuOpen}
           className={"  h-fit "}
           alignment="md:overflow-y-hidden z-50 overflow-y-scroll w-full gap-3 
            sm:text-start   "

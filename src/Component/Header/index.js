@@ -25,6 +25,8 @@
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [scrollingUp, setScrollingUp] = useState(true);
 
+    
+
     const showDrawer = () => {
       setOpen(true);
     };
