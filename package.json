@@ -12,6 +12,7 @@
     "@motionone/utils": "^10.16.3",
     "@prisma/client": "^5.8.0",
     "@vercel/postgres": "^0.5.1",
+    "@vercel/speed-insights": "^1.0.9",
     "antd": "^5.11.5",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
