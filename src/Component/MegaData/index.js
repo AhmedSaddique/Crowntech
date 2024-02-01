@@ -7,31 +7,12 @@
     import { HeadingH4, HeadingH6 } from "../Heading";
     import { Para12 } from "../ParaGraph";
 
-    const MegaData = ({ categoryId }) => {
-      const [serviceinfo, setserviceinfo] = useState([]);
-      const [filteredServiceInfo, setFilteredServiceInfo] = useState([]);
+    const MegaData = ({services }) => {
       const { id, setid } = UseidContext();
       const router = useRouter();
 
 
-    // Fetch service info
-    useEffect(() => {
-      const fetchServiceInfo = async () => {
-        try {
-          const response = await axios.get(`/api/serviceinfo`);
-          setserviceinfo(response.data.serviceinfos);
-        } catch (error) {
-          console.error("Error getting service info:", error);
-        }
-      };
-      fetchServiceInfo();
-    }, [categoryId]);
-
-    // Filter service information based on category
-    useEffect(() => {
-      const filteredData = serviceinfo.filter(service => service.categoryId === categoryId);
-      setFilteredServiceInfo(filteredData);
-    }, [serviceinfo, categoryId]);
+    
 
     const handleServiceClick = useCallback((service) => {
       setid(service.id);
@@ -51,7 +32,7 @@
           <div className="flex items-center p-3 ">
             <HeadingH4 title={"Core Services"} />
           </div>
-          {filteredServiceInfo.map((service, index) => (
+          {services.map((service, index) => (
             <div
               key={index}
               onClick={() => handleServiceClick(service)}

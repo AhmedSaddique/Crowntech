@@ -18,6 +18,7 @@ const MegaMenu = ({
 }) => {
   const [servicecat, setservicecat] = useState(servicecatProp || []);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
+  const [allServices, setAllServices] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +35,23 @@ const MegaMenu = ({
     };
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const response = await axios.get('/api/serviceinfo');
+        setAllServices(response.data.serviceinfos);
+      } catch (error) {
+        console.error("Error getting service info:", error);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  // Filter services for active category
+  const activeCategoryServices = allServices.filter(service => service.categoryId === activeCategoryId);
+
 
   const dropdownRef = useRef(null);
   // const toggleMenu = () => {
@@ -92,6 +110,7 @@ const MegaMenu = ({
                 <ServiceContext>
                   <MegaData
                     categoryId={activeCategoryId}
+                    services={activeCategoryServices}
                   />
                 </ServiceContext>
               )}
