@@ -40,7 +40,6 @@
                 height={200}
                 src={`/${service.serviceImage.replace("public/", "")}`}
                 alt={`/${service.serviceImage.replace("public/", "")}`}
-                loading="lazy"
               />
               <div>
                 <HeadingH6  title={service.serviceName} />
