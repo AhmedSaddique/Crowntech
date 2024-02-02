@@ -8,9 +8,7 @@ import icon from '../../../public/assets/images/dashicon.avif'
 import Image from 'next/image';
 const DashboardProvider = ({ children}) => {
   const [activeLink, setActiveLink] = useState('/dashboard');
-  const handleLinkClick = (Link) => {
-    setActiveLink(Link);
-  };
+
   return (
    <>
   <header className="sticky top-0 flex shadow flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-primary-blue500 border-b text-sm py-2.5 sm:py-4 lg:ps-64 dark:bg-white ">
