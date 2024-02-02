@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { GrHomeRounded } from "react-icons/gr";
 import { IoServerOutline } from "react-icons/io5";
 import Switcher from '../Switcher';
+import icon from '../../../public/assets/images/dashicon.avif'
+import Image from 'next/image';
 const DashboardProvider = ({ children}) => {
   const [activeLink, setActiveLink] = useState('/dashboard');
   const handleLinkClick = (Link) => {
@@ -41,7 +43,7 @@ const DashboardProvider = ({ children}) => {
           <Switcher />
           <div className="hs-dropdown relative inline-flex [--placement:bottom-right]">
             <button id="hs-dropdown-with-header" type="button" className="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent  hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none  dark:hover:bg-gray-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-              <img className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800" src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80" alt="Image Description" />
+              <Image className="inline-block h-[2.375rem] w-[2.375rem] rounded-full ring-2 ring-white dark:ring-gray-800" src={icon} alt="Image Description" />
             </button>
             <div className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-[15rem] bg-primary-blue100 shadow-md rounded-lg p-2 dark:bg-white dark:border dark:border-white/70" aria-labelledby="hs-dropdown-with-header">
               <div className="py-3 px-5 -m-2 bg-primary-blue200 rounded-t-lg ">
