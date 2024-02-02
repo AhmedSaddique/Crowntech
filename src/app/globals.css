@@ -260,3 +260,6 @@ html {
   overflow: hidden;
 }
 
+.application-sidebar-backdrop{
+  inset: auto!important;
+}

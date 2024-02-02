@@ -22,6 +22,7 @@
     "pg": "^8.11.3",
     "pg-promise": "^11.5.4",
     "postinstall": "^0.8.0",
+    "preline": "^2.0.3",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",

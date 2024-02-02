@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ImCross } from "react-icons/im";
-import { HeadingH4, HeadingH5, HeadingH6 } from "../Heading";
+import { HeadingH6 } from "../Heading";
 import MegaData from "../MegaData";
 import axios from "axios";
 import ServiceContext from "../ServiceContext";
@@ -54,10 +54,6 @@ const MegaMenu = ({
 
 
   const dropdownRef = useRef(null);
-  // const toggleMenu = () => {
-  //   setIsOpen(!isOpen);
-  // };
- 
 
   const handleTabClick = (categoryId) => {
     setActiveCategoryId(categoryId);

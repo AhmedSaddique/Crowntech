@@ -1,7 +1,6 @@
     "use client";
-    import React, { useEffect, useState, useCallback } from "react";
+    import React, {  useCallback } from "react";
     import Image from "next/image";
-    import axios from "axios";
     import { useRouter } from "next/navigation";
     import { UseidContext } from "../ServiceContext";
     import { HeadingH4, HeadingH6 } from "../Heading";
@@ -10,10 +9,7 @@
     const MegaData = ({services }) => {
       const { id, setid } = UseidContext();
       const router = useRouter();
-
-
-    
-
+      
     const handleServiceClick = useCallback((service) => {
       setid(service.id);
       const serviceNameSlug = service.serviceName.toLowerCase().replace(/ /g, '-'); // replace spaces with hyphens

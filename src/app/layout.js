@@ -3,6 +3,7 @@ import "./globals.css";
 import { ContextProvider } from "@/Component/ContextProvider";
 import ServiceContext from "@/Component/ServiceContext";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import PrelineScript from "@/Component/PrelineScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,9 +16,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
+          
           <ContextProvider>
             <ServiceContext>
             {children}
+            <PrelineScript />
             <SpeedInsights />
             </ServiceContext>
             </ContextProvider>

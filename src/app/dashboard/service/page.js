@@ -1,16 +1,16 @@
 "use client";
-import React, { useContext } from "react";
-import { SidebarContext } from "@/Component/ContextProvider";
+import React from "react";
 import DashboardProvider from "@/Component/DashboardProvider";
 import DashService from "@/Component/Dashboard/DashService";
+import PrelineScript from "@/Component/PrelineScript";
 
 const Service = () => {
-  const { Sidebar } = useContext(SidebarContext);
 
   return (
     <>
       <DashboardProvider>
         <DashService/>
+        <PrelineScript />
       </DashboardProvider>
     </>
   );

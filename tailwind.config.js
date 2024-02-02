@@ -5,6 +5,7 @@ module.exports = {
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/Component/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    'node_modules/preline/dist/*.js',
   ],
   theme: {
     
@@ -143,5 +144,8 @@ module.exports = {
     },
     
   },
-  plugins: [],
+  plugins: [
+    require('preline/plugin'),
+    
+  ],
 }
