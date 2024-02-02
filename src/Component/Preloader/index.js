@@ -68,6 +68,7 @@ const Preloader = () => (
     >
       <Image
         src={techcircle}
+        loading="lazy"
         alt="Circle Image"
         width={200}
         height={200}
